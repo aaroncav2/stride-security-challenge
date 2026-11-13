@@ -1,0 +1,14 @@
+{
+  "name": "stride-security-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "STRIDE Security Challenge - Android app (Capacitor + AdMob)",
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor-community/admob": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0"
+  }
+}

@@ -1,0 +1,567 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c1931"><meta name="description" content="STRIDE Security Challenge: three offline threat-modeling card games."><title>STRIDE Security Challenge · Offline</title><style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#16233b;background:#f3f6fb;font-size:17px;--ink:#172844;--muted:#63718a;--navy:#101d35;--line:#dee4ee;--paper:#fff;--brand:#adf0ca;--radius:18px;--shadow:0 9px 30px rgba(26,47,81,.06)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f4f6fb;line-height:1.55;min-height:100vh}button,select,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #536dd3;outline-offset:3px}h1,h2,h3,p{margin:0}h1,h2,h3{letter-spacing:-.035em;line-height:1.15}p{line-height:1.62}a{color:#1959ad}svg{display:block}#app{min-height:100vh}.appbar{background:#0c1931;color:#fff;border-bottom:1px solid #2c405f;position:relative;z-index:10}.appbar-inner{max-width:1500px;margin:auto;min-height:86px;padding:15px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;gap:14px;align-items:center}.brand-mark{width:48px;height:48px;border-radius:14px;background:#b7f2d4;color:#11233c;display:grid;place-items:center;font-weight:1000;font-size:28px;line-height:1}.brand-title{font-size:22px;letter-spacing:-.035em;font-weight:850;line-height:1.2}.brand-sub{display:block;font-size:13px;color:#b8c9e2;letter-spacing:.07em;text-transform:uppercase;font-weight:650;margin-top:3px}.header-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.header-mode{font-size:14px;color:#b3c8df;padding:0 9px}.btn{border:1px solid #cbd5e4;background:#fff;color:#20314f;padding:11px 18px;min-height:46px;border-radius:12px;font-weight:760;display:inline-flex;justify-content:center;align-items:center;gap:9px;box-shadow:0 2px 2px rgba(0,0,0,.01);transition:transform .14s,background .14s,border .14s}.btn:hover{transform:translateY(-1px);border-color:#7f90aa}.btn.primary{background:#c2f3cf;border-color:#a4e8bd;color:#12352f}.btn.primary:hover{background:#a8eabc}.btn.dark{background:#142743;color:#fff;border-color:#142743}.btn.outline-dark{background:transparent;color:#e7f1ff;border-color:#49617d}.btn.outline-dark:hover{background:#1e3453}.btn.big{padding:15px 25px;min-height:57px;font-size:18px}.btn.tiny{font-size:13px;padding:8px 11px;min-height:36px}.btn:disabled{opacity:.5;transform:none}.wrapper{max-width:1450px;margin:auto;padding:31px 34px 65px}.hero{border-radius:25px;background:linear-gradient(118deg,#132945,#101b35 72%);color:#fff;padding:38px 42px;display:flex;align-items:center;justify-content:space-between;gap:22px;box-shadow:0 16px 34px rgba(30,44,73,.08);position:relative;overflow:hidden}.hero:after{content:'';position:absolute;right:-65px;top:-130px;width:355px;height:355px;border:1px solid #7996b94d;border-radius:50%;pointer-events:none;box-shadow:0 0 0 48px #5a7da80c,0 0 0 95px #b4d9d409}.hero>*{position:relative;z-index:1}.eyebrow{text-transform:uppercase;color:#579b8d;letter-spacing:.15em;font-size:12px;font-weight:850;margin-bottom:11px}.hero .eyebrow{color:#b8ecd4}.hero h1{font-size:clamp(32px,4vw,49px);max-width:790px}.hero p{margin-top:14px;color:#cfdbed;max-width:780px;font-size:17px}.hero-icon{font-size:86px;font-weight:400;color:#baf0d9;opacity:.9;line-height:1}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:28px 0 15px}.section-heading h2{font-size:25px;color:#1a2a46}.section-heading p{color:#687790;margin-top:4px;font-size:15px}.overline{font-size:12px;color:#61718a;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.mode-card{background:#fff;border:2px solid #dfe6ef;border-radius:19px;padding:25px;min-height:214px;text-align:left;display:flex;flex-direction:column;align-items:start;gap:12px;box-shadow:var(--shadow);transition:background .15s,border-color .15s,transform .15s}.mode-card:hover{border-color:#7ca0ae;transform:translateY(-2px)}.mode-card.selected{background:#f4fffa;border-color:#4ba886;box-shadow:0 0 0 3px #85e0b82b}.mode-top{display:flex;align-items:center;justify-content:space-between;width:100%}.mode-icon{display:grid;place-items:center;width:49px;height:49px;background:#edf5fb;color:#264e76;border-radius:13px;font-size:34px}.mode-card.selected .mode-icon{background:#d7f5e8;color:#16704c}.mode-check{color:#167e59;font-weight:900;font-size:15px}.mode-category{font-size:12px;font-weight:900;letter-spacing:.08em;color:#667894}.mode-name{font-size:24px;color:#1b2b43;line-height:1.16;font-weight:850}.mode-caption{color:#687992;font-size:15px}.mode-pick{font-size:13px;color:#2e7664;font-weight:900;margin-top:auto;letter-spacing:.01em}.two-col{display:grid;grid-template-columns:minmax(0,1.58fr) minmax(315px,.76fr);gap:18px;margin-top:18px;align-items:start}.panel{background:#fff;border:1px solid #e0e6f0;border-radius:20px;box-shadow:var(--shadow)}.panel-pad{padding:23px 25px}.panel-head{display:flex;gap:9px;align-items:center;justify-content:space-between;margin-bottom:12px}.panel-head h2{font-size:22px}.panel-head .sub{font-size:13px;color:#668099}.pill{font-size:12px;letter-spacing:.02em;border-radius:100px;padding:6px 12px;background:#e7f5ed;color:#296b53;font-weight:850;white-space:nowrap}.architecture{padding:24px;overflow:hidden}.diagram-wrap{max-width:100%;overflow-x:auto;border:1px solid #e5eaf2;background:radial-gradient(circle at 30% 20%,#f7fafc 1px,transparent 1.5px) 0 0/24px 24px,#f9fbff;border-radius:15px;scrollbar-color:#a8b7c8 transparent}.diagram{width:100%;min-width:820px;height:auto;display:block}.diagram text{font-family:Inter,Arial,sans-serif}.diagram .zone{fill:#ecf2fa66;stroke:#bfcdde;stroke-width:1.5;stroke-dasharray:6 5}.diagram .zone-label{fill:#6d7d93;font-size:12px;font-weight:800;letter-spacing:1.1px}.diagram .connection{fill:none;stroke:#8199b5;stroke-width:2.2}.diagram .arrow-label{fill:#60748d;font-size:12px;font-weight:700}.diagram .node-label{fill:#172844;font-size:14px;font-weight:800}.diagram .node-type{fill:#5c708e;font-size:10.5px;font-weight:800;letter-spacing:1px}.diagram .node{fill:#fff;stroke:#bbcce0;stroke-width:1.5}.diagram .node.data{fill:#f4ecfd;stroke:#a68fcd}.diagram .node.security{fill:#e4f6ee;stroke:#76c9ad}.diagram .node.client{fill:#e9f4fd;stroke:#88b6da}.diagram .node.external{fill:#fff5e6;stroke:#e2bd81}.legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;color:#667890;margin-top:14px}.legend b{color:#354a65}.legend .sq{width:12px;height:12px;border-radius:4px;background:#e1edf8;display:inline-block;vertical-align:-1px;margin-right:5px;border:1px solid #acc8df}.scroll-hint{font-size:13px;color:#74859e;margin-top:9px}.info-panel h2{font-size:23px;margin-bottom:13px}.info-panel .bodycopy{font-size:16px;color:#42526e}.info-panel .field-label{margin-top:22px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.075em;color:#6f7f95;font-size:12px;font-weight:900}.assumption{background:#f4f8fc;border-left:3px solid #8bafd1;padding:14px 17px;color:#334a66;border-radius:0 10px 10px 0;font-size:15px}.setup-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:18px;padding:23px 26px;background:#ebf5f0;border:1px solid #cce5d7;border-radius:18px}.setup-footer h2{font-size:22px;margin-bottom:5px}.setup-footer p{font-size:15px;color:#526d66}.player-inline{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}.player-token{padding:6px 10px;border-radius:7px;border:1px solid #bcd6c9;background:#fff;font-size:13px;font-weight:750;color:#255041}.smallprint{color:#73829a;font-size:13px;margin-top:14px}.board-head{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:20px}.board-head h1{font-size:clamp(28px,3.3vw,41px)}.board-head p{font-size:15px;color:#73819b;margin-top:5px}.board-actions{display:flex;gap:9px;flex-wrap:wrap}.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:0 0 18px}.score{padding:18px 21px;border-radius:17px;border:1px solid #e0e6f0;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px}.score.current{background:#f0fff6;border-color:#75c9a4;box-shadow:inset 0 0 0 1px #91d9b7}.score .name{font-weight:900;font-size:17px}.score .role{font-size:13px;color:#78869d}.score .digits{font-size:37px;line-height:1;font-weight:950;letter-spacing:-.04em;color:#182f47}.score .digits small{font-size:13px;font-weight:800;color:#7a8ca0}.score .subscore{font-size:12px;color:#6b7b8f;text-align:right;margin-top:6px}.score-name{display:flex;align-items:center;gap:11px}.avatar{flex:none;width:45px;height:45px;border-radius:12px;display:grid;place-items:center;background:#d8e9fd;color:#2a4a75;font-weight:900}.score.human .avatar{background:#d9f4df;color:#176e4c}.game-content{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.75fr);gap:16px}.table-panel{padding:24px;min-height:298px}.table-header{display:flex;justify-content:space-between;gap:12px;align-items:start}.table-header h2{font-size:27px}.table-header .tiny-meta{color:#667b92;font-size:14px}.counter{background:#eff3f8;color:#53677f;padding:9px 14px;border-radius:100px;font-weight:850;font-size:14px}.played-area{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px;align-items:start}.played-slot{min-height:174px;border:1.5px dashed #d4e0eb;background:#f8fafc;border-radius:15px;padding:12px;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center}.played-slot .slot-name{font-weight:800;font-size:14px;color:#4b617d}.played-slot.empty{color:#7d8b9e}.played-slot.played{border-style:solid;background:#fff;justify-content:start}.mini-card{width:76px;height:97px;display:flex;flex-direction:column;justify-content:space-between;background:#fffdf8;border:1px solid #d5dae6;border-radius:10px;padding:8px;box-shadow:0 4px 8px #23395310;position:relative}.mini-card b{font-size:22px;line-height:1}.mini-card .pip{text-align:center;font-size:29px}.mini-card .tiny-suit{font-size:10px;font-weight:800;color:#35465d}.played-slot .decision{font-size:12px;font-weight:900}.decision.yes{color:#168457}.decision.no{color:#a16a30}.played-slot .issue{font-size:12px;color:#667990;max-width:190px;text-align:center;line-height:1.3}.status-line{margin-top:16px;padding:12px 15px;background:#eef4fa;border-radius:11px;color:#4e637c;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:10px}.status-line strong{color:#233c58}.status-line .pct{white-space:nowrap;font-weight:800}.round-panel{padding:23px}.round-panel h2{font-size:21px;margin-bottom:12px}.round-panel p{font-size:15px;color:#52657e}.turn-banner{display:flex;align-items:center;gap:10px;padding:12px;background:#eef9f3;border-radius:12px;margin:14px 0;font-weight:800;color:#31694e}.round-note{background:#f6f8fd;border-radius:12px;padding:14px;margin-top:13px;font-size:14px;color:#62758d}.result-tile{padding:15px;background:#ebf8f0;border-radius:13px;margin:15px 0}.result-tile strong{font-size:17px}.result-tile p{margin-top:6px;font-size:14px}.hand-panel{margin-top:18px;padding:24px}.hand-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.hand-top h2{font-size:26px}.hand-top p{font-size:14px;color:#6b7d95;margin-top:6px}.hand-controls{display:flex;gap:7px;margin:15px 0 18px;flex-wrap:wrap}.tab{background:#eef2f8;border:1px solid #dde5ee;border-radius:9px;padding:8px 12px;font-size:14px;font-weight:800;color:#405674}.tab.active{background:#193656;border-color:#193656;color:#fff}.tab:disabled{opacity:.4}.hand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(154px,1fr));gap:13px;align-items:stretch}.playing-card{width:100%;max-width:210px;min-height:204px;position:relative;text-align:left;display:flex;flex-direction:column;background:#fffdf9;border:2px solid #d7deea;border-radius:13px;padding:13px 15px;color:#23324a;box-shadow:0 5px 11px rgba(30,47,76,.09);transition:transform .12s,border-color .12s,box-shadow .12s}.playing-card:hover:not(:disabled){transform:translateY(-6px);border-color:#8bbaab;box-shadow:0 11px 20px #244e741f}.playing-card:disabled{opacity:.43;background:#f4f5f7;box-shadow:none}.playing-card .rank{font-family:Georgia,serif;font-size:38px;font-weight:bold;line-height:.95;letter-spacing:-.02em}.playing-card .symbol{position:absolute;right:15px;top:12px;font-size:29px;line-height:1}.playing-card .category{font-size:14px;font-weight:900;margin-top:14px;line-height:1.1}.playing-card .hint{font-size:13px;color:#53617a;margin-top:9px;line-height:1.38;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.playing-card .corner-bottom{position:absolute;bottom:10px;right:14px;font-family:Georgia,serif;font-size:16px;transform:rotate(180deg);opacity:.5}.playing-card.trump{background:#f3f1ff;border-color:#a5a3e3}.playing-card.trump .rank{color:#4b49a3}.playing-card.trump .symbol{color:#5b58c7}.playing-card.legal{outline:2px solid transparent}.playing-card .play-indicator{margin-top:auto;font-size:12px;font-weight:900;color:#32755c;padding-top:16px}.playing-card:disabled .play-indicator{color:#8090a2}.empty-hand{padding:25px;border:1px dashed #cdd9e6;border-radius:13px;color:#697c92}.trick-finish{background:#eaf9ee;border:1px solid #b5e6c4;border-radius:14px;padding:18px 19px;margin:15px 0}.trick-finish b{font-size:20px}.trick-finish p{margin-top:5px;color:#4a7059;font-size:15px}.trick-finish .btn{margin-top:12px}.modal-backdrop{position:fixed;inset:0;background:rgba(12,22,40,.73);display:flex;align-items:center;justify-content:center;padding:24px;z-index:60;overflow-y:auto}.modal{background:white;border-radius:21px;max-width:960px;width:100%;max-height:calc(100dvh - 48px);overflow-y:auto;box-shadow:0 40px 110px rgba(0,0,0,.35);position:relative}.modal-inner{display:grid;grid-template-columns:244px minmax(0,1fr);gap:28px;padding:32px}.modal-close{position:absolute;top:14px;right:15px;width:37px;height:37px;border-radius:100px;background:#eff3f9;border:0;font-size:25px;line-height:1;display:grid;place-items:center;color:#4d5c75}.modal-visual{display:flex;flex-direction:column;gap:14px;padding-top:18px}.big-card{width:220px;height:285px;border-radius:16px;padding:18px;background:#fffdf7;border:2px solid #ccd3df;box-shadow:0 14px 25px #15213c22;display:flex;flex-direction:column;justify-content:space-between;position:relative;color:#22334c}.big-card.trump{background:#efefff;border-color:#a3a0ed;color:#4a4eb0}.big-card .rank{font-family:Georgia,serif;font-size:70px;line-height:1;font-weight:bold}.big-card .symbol{text-align:center;font-size:75px;line-height:1}.big-card .suit-name{text-align:center;font-size:19px;font-weight:900}.big-card .tail{transform:rotate(180deg);font-family:Georgia,serif;font-size:31px;line-height:1}.modal-meta{color:#7787a0;font-size:13px;font-weight:800;margin-top:7px}.modal-content{padding:22px 18px 8px 0;min-width:0}.modal-content h2{font-size:clamp(24px,3vw,30px);margin-bottom:15px;max-width:570px}.modal-content .card-prompt{font-size:18px;line-height:1.48;color:#31435d;background:#f1f5fb;border-left:4px solid #92a8c1;border-radius:0 9px 9px 0;padding:14px 16px;margin-bottom:17px}.verdict{border-radius:14px;border:1px solid #bcdac8;background:#eefaf2;padding:19px 20px;margin:0 0 16px}.verdict.no{background:#fff8ec;border-color:#ecd7b1}.verdict .verdict-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#177451;font-size:16px;font-weight:900}.verdict.no .verdict-top{color:#9a621b}.verdict h3{font-size:21px;line-height:1.3;margin-bottom:7px}.verdict p{color:#435a71;font-size:16px;line-height:1.55}.fix{border-top:1px solid #ccd9d5;margin-top:13px;padding-top:12px;font-size:15px;color:#2e594c}.decision-meta{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:10px;padding-top:9px}.point-value{font-size:18px;font-weight:850;color:#226c51}.point-value.no{color:#a16a30}.modal-footer-note{font-size:13px;color:#72839d;margin-top:14px}.report-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}.report-head h1{font-size:clamp(28px,3.5vw,39px)}.report-head p{margin-top:6px;color:#60728b}.metrics{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}.metric{border-radius:9px;padding:9px 14px;background:#e8eff7;color:#354b64;font-size:15px;font-weight:800}.log-list{display:grid;gap:12px}.log-entry{border:1px solid #e1e7ef;background:#fff;border-radius:14px;padding:18px 20px}.log-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.log-top b{font-size:17px}.log-top .meta{font-size:13px;color:#71819b}.log-entry .label{font-size:13px;font-weight:900;margin:6px 0 9px}.log-entry .label.yes{color:#167956}.log-entry .label.no{color:#9c6621}.log-entry p{color:#526179;font-size:15px}.log-entry details{margin-top:9px}.log-entry summary{color:#2d6086;font-size:14px;font-weight:850;cursor:pointer}.log-entry details p{margin-top:8px;background:#f4f7fb;border-radius:9px;padding:12px}.empty-report{border:1px dashed #cdd8e5;padding:42px;background:#fff;border-radius:16px;color:#60718a;text-align:center}.finished{padding:33px;border:1px solid #bad9c8;background:linear-gradient(120deg,#effbf3,#fff);border-radius:19px;margin:14px 0 22px}.finished h1{font-size:clamp(30px,3vw,43px)}.finished p{margin-top:9px;color:#4a675a}.final-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}.rule{padding:21px 23px;background:#fff;border:1px solid #dfe6ef;border-radius:15px}.rule h3{font-size:20px;margin-bottom:8px}.rule p{color:#51637e;font-size:16px}.footer{max-width:1450px;margin:auto;padding:0 34px 30px;color:#73849a;font-size:12px}.visually-hidden{position:absolute!important;height:1px!important;width:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}.banner-compact{padding:24px 28px}.banner-compact h1{font-size:30px}.banner-compact p{font-size:15px;margin-top:8px}
+@media(max-width:1130px){.two-col,.game-content{grid-template-columns:1fr}.hero-icon{font-size:64px}.diagram{min-width:800px}.mode-card{padding:19px}.scores{gap:9px}.score{padding:14px}.score .digits{font-size:31px}}@media(max-width:770px){:root{font-size:16px}.appbar-inner{padding:14px 18px;align-items:start;flex-direction:column;gap:11px}.brand-title{font-size:19px}.brand-mark{width:40px;height:40px;font-size:24px}.header-actions{width:100%;justify-content:space-between}.header-mode{padding:0}.wrapper{padding:18px 13px 45px}.hero{padding:25px 22px;border-radius:17px}.hero-icon{display:none}.hero h1{font-size:32px}.mode-grid{grid-template-columns:1fr;gap:11px}.mode-card{min-height:0;padding:18px;gap:9px}.mode-name{font-size:22px}.mode-top .mode-icon{width:42px;height:42px;font-size:28px}.section-heading{margin-top:22px}.panel-pad,.architecture,.table-panel,.round-panel,.hand-panel{padding:18px}.setup-footer{align-items:stretch;flex-direction:column;padding:19px}.scores{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.score{display:block;padding:12px 10px}.score .name{font-size:13px}.score .role{font-size:11px}.score .digits{font-size:30px;margin-top:10px}.score .subscore{text-align:left;font-size:11px}.score-name{gap:5px}.score .avatar{width:29px;height:29px;font-size:11px}.board-head{align-items:start;flex-direction:column}.board-actions{width:100%}.played-area{gap:5px}.played-slot{min-height:176px;padding:7px 5px}.played-slot .slot-name{font-size:11px}.played-slot .issue{font-size:10px}.played-slot .decision{font-size:10px}.mini-card{width:61px;height:83px;padding:6px}.mini-card b{font-size:17px}.mini-card .pip{font-size:22px}.hand-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.playing-card{max-width:none;min-height:185px;padding:12px}.playing-card .rank{font-size:36px}.playing-card .hint{font-size:13px}.modal-backdrop{padding:8px;align-items:start}.modal{max-height:calc(100dvh - 16px);border-radius:13px}.modal-inner{grid-template-columns:1fr;gap:8px;padding:20px 18px}.modal-visual{display:none}.modal-content{padding:30px 0 3px}.modal-content .card-prompt{font-size:17px}.modal-content h2{font-size:25px}.decision-meta{align-items:stretch;flex-direction:column}.decision-meta .btn{width:100%}.report-head{align-items:start;flex-direction:column}.rules-grid{grid-template-columns:1fr}.footer{padding:0 16px 22px}.banner-compact h1{font-size:25px}}
+@media(max-width:410px){.header-actions{gap:5px}.header-actions .btn{padding:8px 10px;min-height:38px;font-size:12px}.header-mode{display:none}.playing-card .category{font-size:13px}.mode-category{font-size:11px}.scores .role{display:none}}
+
+/* Keep diagrams large enough to read; place explanatory text below them. */
+.two-col{grid-template-columns:minmax(0,1fr)}
+.two-col .info-panel{display:block}
+.two-col .info-panel .bodycopy{max-width:1120px}
+.two-col .info-panel .assumption{max-width:1120px}
+@media(max-width:770px){.two-col .info-panel{display:block}}
+
+.flow-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:14px}.flow-chip{display:flex;align-items:center;gap:7px;flex-wrap:wrap;border:1px solid #e5ebf3;border-radius:9px;padding:9px 11px;background:#f6f9fd;color:#536882;font-size:13px}.flow-end{font-weight:760;color:#28435e}.flow-arrow{font-weight:900;color:#458a8a}.flow-detail{margin-left:auto;border-radius:5px;padding:2px 6px;background:#e6edf6;color:#4d657d;font-size:11px;font-weight:800;white-space:nowrap}@media(max-width:770px){.flow-list{grid-template-columns:1fr}.flow-chip{font-size:12px}.flow-detail{font-size:11px}}
+</style></head><body><div id="app"></div><div id="notify" role="status" aria-live="polite" class="visually-hidden"></div><script>/* EoP educational card prompts. Attribution: Microsoft 2009, CC BY 3.0 US. */
+window.SC_CARDS=[{"id":"S_2","suit":"S","rank":"2","value":2,"title":"Spoofing","prompt":"An attacker could squat on the random port or socket that the server normally uses"},{"id":"S_3","suit":"S","rank":"3","value":3,"title":"Spoofing","prompt":"An attacker could try one credential after another and there’s nothing to slow them down (online or offline)"},{"id":"S_4","suit":"S","rank":"4","value":4,"title":"Spoofing","prompt":"An attacker can anonymously connect, because we expect authentication to be done at a higher level"},{"id":"S_5","suit":"S","rank":"5","value":5,"title":"Spoofing","prompt":"An attacker can confuse a client because there are too many ways to identify a server"},{"id":"S_6","suit":"S","rank":"6","value":6,"title":"Spoofing","prompt":"An attacker can spoof a server because identifiers aren’t stored on the client and checked for consistency on re-connection (that is, there’s no key persistence)"},{"id":"S_7","suit":"S","rank":"7","value":7,"title":"Spoofing","prompt":"An attacker can connect to a server or peer over a link that isn’t authenticated (and encrypted)"},{"id":"S_8","suit":"S","rank":"8","value":8,"title":"Spoofing","prompt":"An attacker could steal credentials stored on the server and reuse them (for example, a key is stored in a world readable file)"},{"id":"S_9","suit":"S","rank":"9","value":9,"title":"Spoofing","prompt":"An attacker who gets a password can reuse it (Use stronger authenticators)"},{"id":"S_10","suit":"S","rank":"10","value":10,"title":"Spoofing","prompt":"An attacker can choose to use weaker or no authentication"},{"id":"S_J","suit":"S","rank":"J","value":11,"title":"Spoofing","prompt":"An attacker could steal credentials stored on the client and reuse them"},{"id":"S_Q","suit":"S","rank":"Q","value":12,"title":"Spoofing","prompt":"An attacker could go after the way credentials are updated or recovered (account recovery doesn’t require disclosing the old password)"},{"id":"S_K","suit":"S","rank":"K","value":13,"title":"Spoofing","prompt":"Your system ships with a default admin password, and doesn’t force a change"},{"id":"S_A","suit":"S","rank":"A","value":14,"title":"Spoofing","prompt":"You’ve invented a new Spoofing attack"},{"id":"T_3","suit":"T","rank":"3","value":3,"title":"Tampering","prompt":"An attacker can take advantage of your custom key exchange or integrity control which you built instead of using standard crypto"},{"id":"T_4","suit":"T","rank":"4","value":4,"title":"Tampering","prompt":"Your code makes access control decisions all over the place, rather than with a security kernel"},{"id":"T_5","suit":"T","rank":"5","value":5,"title":"Tampering","prompt":"An attacker can replay data without detection because your code doesn’t provide timestamps or sequence numbers"},{"id":"T_6","suit":"T","rank":"6","value":6,"title":"Tampering","prompt":"An attacker can write to a data store your code relies on"},{"id":"T_7","suit":"T","rank":"7","value":7,"title":"Tampering","prompt":"An attacker can bypass permissions because you don’t make names canonical before checking access permissions"},{"id":"T_8","suit":"T","rank":"8","value":8,"title":"Tampering","prompt":"An attacker can manipulate data because there’s no integrity protection for data on the network"},{"id":"T_9","suit":"T","rank":"9","value":9,"title":"Tampering","prompt":"An attacker can provide or control state information"},{"id":"T_10","suit":"T","rank":"10","value":10,"title":"Tampering","prompt":"An attacker can alter information in a data store because it has weak ACLs or includes a group which is equivalent to everyone (“all Live ID holders”)"},{"id":"T_J","suit":"T","rank":"J","value":11,"title":"Tampering","prompt":"An attacker can write to some resource because permissions are granted to the world or there are no ACLs"},{"id":"T_Q","suit":"T","rank":"Q","value":12,"title":"Tampering","prompt":"An attacker can change parameters over a trust boundary and after validation (for example, important parameters in a hidden field in HTML, or passing a pointer to critical memory)"},{"id":"T_K","suit":"T","rank":"K","value":13,"title":"Tampering","prompt":"An attacker can load code inside your process via an extension point"},{"id":"T_A","suit":"T","rank":"A","value":14,"title":"Tampering","prompt":"You’ve invented a new Tampering attack"},{"id":"R_2","suit":"R","rank":"2","value":2,"title":"Repudiation","prompt":"An attacker can pass data through the log to attack a log reader, and there’s no documentation of what sorts of validation are done"},{"id":"R_3","suit":"R","rank":"3","value":3,"title":"Repudiation","prompt":"A low privilege attacker can read interesting security information in the logs"},{"id":"R_4","suit":"R","rank":"4","value":4,"title":"Repudiation","prompt":"An attacker can alter digital signatures because the digital signature system you’re implementing is weak, or uses MACs where it should use a signature"},{"id":"R_5","suit":"R","rank":"5","value":5,"title":"Repudiation","prompt":"An attacker can alter log messages on a network because they lack strong integrity controls"},{"id":"R_6","suit":"R","rank":"6","value":6,"title":"Repudiation","prompt":"An attacker can create a log entry without a timestamp (or no log entry is timestamped)"},{"id":"R_7","suit":"R","rank":"7","value":7,"title":"Repudiation","prompt":"An attacker can make the logs wrap around and lose data"},{"id":"R_8","suit":"R","rank":"8","value":8,"title":"Repudiation","prompt":"An attacker can make a log lose or confuse security information"},{"id":"R_9","suit":"R","rank":"9","value":9,"title":"Repudiation","prompt":"An attacker can use a shared key to authenticate as different principals, confusing the information in the logs"},{"id":"R_10","suit":"R","rank":"10","value":10,"title":"Repudiation","prompt":"An attacker can get arbitrary data into logs from unauthenticated (or weakly authenticated) outsiders without validation"},{"id":"R_J","suit":"R","rank":"J","value":11,"title":"Repudiation","prompt":"An attacker can edit logs and there’s no way to tell (perhaps because there’s no heartbeat option for the logging system)"},{"id":"R_Q","suit":"R","rank":"Q","value":12,"title":"Repudiation","prompt":"An attacker can say “I didn’t do that,” and you’d have no way to prove them wrong"},{"id":"R_K","suit":"R","rank":"K","value":13,"title":"Repudiation","prompt":"The system has no logs"},{"id":"R_A","suit":"R","rank":"A","value":14,"title":"Repudiation","prompt":"You’ve invented a new Repudiation attack"},{"id":"I_2","suit":"I","rank":"2","value":2,"title":"Information Disclosure","prompt":"An attacker can brute-force file encryption because there’s no defense in place (example defense: password stretching)"},{"id":"I_3","suit":"I","rank":"3","value":3,"title":"Information Disclosure","prompt":"An attacker can see error messages with security sensitive content"},{"id":"I_4","suit":"I","rank":"4","value":4,"title":"Information Disclosure","prompt":"An attacker can read content because messages (say, an email or HTTP cookie) aren’t encrypted even if the channel is encrypted"},{"id":"I_5","suit":"I","rank":"5","value":5,"title":"Information Disclosure","prompt":"An attacker may be able to read a document or data because it’s encrypted with a non-standard algorithm"},{"id":"I_6","suit":"I","rank":"6","value":6,"title":"Information Disclosure","prompt":"An attacker can read data because it’s hidden or occluded (for undo or change tracking) and the user might forget that it’s there"},{"id":"I_7","suit":"I","rank":"7","value":7,"title":"Information Disclosure","prompt":"An attacker can act as a ‘man in the middle’ because you don’t authenticate endpoints of a network connection"},{"id":"I_8","suit":"I","rank":"8","value":8,"title":"Information Disclosure","prompt":"An attacker can access information through a search indexer, logger, or other such mechanism"},{"id":"I_9","suit":"I","rank":"9","value":9,"title":"Information Disclosure","prompt":"An attacker can read sensitive information in a file with bad ACLs"},{"id":"I_10","suit":"I","rank":"10","value":10,"title":"Information Disclosure","prompt":"An attacker can read information in files with no ACLs"},{"id":"I_J","suit":"I","rank":"J","value":11,"title":"Information Disclosure","prompt":"An attacker can discover the fixed key being used to encrypt"},{"id":"I_Q","suit":"I","rank":"Q","value":12,"title":"Information Disclosure","prompt":"An attacker can read the entire channel because the channel (say, HTTP or SMTP) isn’t encrypted"},{"id":"I_K","suit":"I","rank":"K","value":13,"title":"Information Disclosure","prompt":"An attacker can read network information because there’s no cryptography used"},{"id":"I_A","suit":"I","rank":"A","value":14,"title":"Information Disclosure","prompt":"You’ve invented a new Information Disclosure attack"},{"id":"D_2","suit":"D","rank":"2","value":2,"title":"Denial of Service","prompt":"An attacker can make your authentication system unusable or unavailable"},{"id":"D_3","suit":"D","rank":"3","value":3,"title":"Denial of Service","prompt":"An attacker can make a client unavailable or unusable but the problem goes away when the attacker stops"},{"id":"D_4","suit":"D","rank":"4","value":4,"title":"Denial of Service","prompt":"An attacker can make a server unavailable or unusable but the problem goes away when the attacker stops"},{"id":"D_5","suit":"D","rank":"5","value":5,"title":"Denial of Service","prompt":"An attacker can make a client unavailable or unusable without ever authenticating but the problem goes away when the attacker stops"},{"id":"D_6","suit":"D","rank":"6","value":6,"title":"Denial of Service","prompt":"An attacker can make a server unavailable or unusable without ever authenticating but the problem goes away when the attacker stops"},{"id":"D_7","suit":"D","rank":"7","value":7,"title":"Denial of Service","prompt":"An attacker can make a client unavailable or unusable and the problem persists after the attacker goes away"},{"id":"D_8","suit":"D","rank":"8","value":8,"title":"Denial of Service","prompt":"An attacker can make a server unavailable or unusable and the problem persists after the attacker goes away"},{"id":"D_9","suit":"D","rank":"9","value":9,"title":"Denial of Service","prompt":"An attacker can make a client unavailable or unusable without ever authenticating and the problem persists after the attacker goes away"},{"id":"D_10","suit":"D","rank":"10","value":10,"title":"Denial of Service","prompt":"An attacker can make a server unavailable or unusable without ever authenticating and the problem persists after the attacker goes away"},{"id":"D_J","suit":"D","rank":"J","value":11,"title":"Denial of Service","prompt":"An attacker can cause the logging subsystem to stop working"},{"id":"D_Q","suit":"D","rank":"Q","value":12,"title":"Denial of Service","prompt":"An attacker can amplify a Denial of Service attack through this component with amplification on the order of 10:1"},{"id":"D_K","suit":"D","rank":"K","value":13,"title":"Denial of Service","prompt":"An attacker can amplify a Denial of Service attack through this component with amplification on the order of 100:1"},{"id":"D_A","suit":"D","rank":"A","value":14,"title":"Denial of Service","prompt":"You’ve invented a new Denial of Service attack"},{"id":"E_5","suit":"E","rank":"5","value":5,"title":"Elevation of Privilege","prompt":"An attacker can force data through different validation paths which give different results"},{"id":"E_6","suit":"E","rank":"6","value":6,"title":"Elevation of Privilege","prompt":"An attacker could take advantage of .NET permissions you ask for, but don’t use"},{"id":"E_7","suit":"E","rank":"7","value":7,"title":"Elevation of Privilege","prompt":"An attacker can provide a pointer across a trust boundary, rather than data which can be validated"},{"id":"E_8","suit":"E","rank":"8","value":8,"title":"Elevation of Privilege","prompt":"An attacker can enter data that is checked while still under their control and used later on the other side of a trust boundary"},{"id":"E_9","suit":"E","rank":"9","value":9,"title":"Elevation of Privilege","prompt":"There’s no reasonable way for a caller to figure out what validation of tainted data you perform before passing it to them"},{"id":"E_10","suit":"E","rank":"10","value":10,"title":"Elevation of Privilege","prompt":"There’s no reasonable way for a caller to figure out what security assumptions you make"},{"id":"E_J","suit":"E","rank":"J","value":11,"title":"Elevation of Privilege","prompt":"An attacker can reflect input back to a user, like cross site scripting"},{"id":"E_Q","suit":"E","rank":"Q","value":12,"title":"Elevation of Privilege","prompt":"You include user-generated content within your page, possibly including the content of random URLs"},{"id":"E_K","suit":"E","rank":"K","value":13,"title":"Elevation of Privilege","prompt":"An attacker can inject a command that the system will run at a higher privilege level"},{"id":"E_A","suit":"E","rank":"A","value":14,"title":"Elevation of Privilege","prompt":"You’ve invented a new Elevation of Privilege attack"}];
+</script><script>/* Fictional reference architectures. Every verdict is a predefined training assessment,
+   NOT a scan of a live system. Sources: supplied customer-portal examples, Wireless Sensor
+   Network game-theory survey (2016), and supplied government-network BGP routing materials. */
+window.SC_MODES = [
+ {
+  id:'portal', name:'Customer Portal', category:'APPLICATION SECURITY', icon:'◈', accent:'#8ad7be',
+  subtitle:'Customer accounts, cases, documents and service requests',
+  description:'A fictional government customer-service portal allows customers to sign in, open support cases, upload documents, read messages and track service requests. The browser talks to a web application and service API. The API uses an identity provider, stores case data in a database and object store, and sends notifications through a partner service.',
+  posture:'Training assumptions: the portal uses HTTPS, centrally managed infrastructure and an external identity provider. A few deliberately missing application controls (authorization, throttling, secure exports and audit evidence) create testable findings.',
+  zones:[['CUSTOMER / PUBLIC',26,68,296,397],['APPLICATION / TRUSTED',348,68,639,397]],
+  nodes:[
+   ['customer','Customer browser','client',48,210],['edge','Web edge / WAF','service',255,210],
+   ['portal','Customer portal UI','service',450,113],['api','Case-management API','service',654,210],
+   ['identity','Identity provider','security',449,341],['database','Case database','data',843,119],
+   ['storage','Document storage','data',843,292],['notify','Notification partner','external',654,410]
+  ],
+  edges:[['customer','edge','HTTPS'],['edge','portal','HTML + session'],['portal','api','API requests'],['portal','identity','OIDC'],['api','database','Read / write'],['api','storage','File objects'],['api','notify','Notifications']]
+ },
+ {
+  id:'wireless', name:'Wireless Security', category:'WIRELESS SENSOR NETWORK', icon:'◎', accent:'#80c6ff',
+  subtitle:'Sensor trust, radio interference and resilient telemetry',
+  description:'A fictional government-operated wireless sensor network has battery-powered sensor nodes, multi-hop wireless relays, a field gateway and a central telemetry collector. Operators view measurements through a monitoring console. Some legacy nodes share radio credentials, and reputation scoring at the gateway is intentionally incomplete for training.',
+  posture:'Training assumptions: individual nodes have constrained batteries and occasionally use older radio protocols. Gateway backhaul is encrypted, but some radio-layer identity checks, freshness protections and forwarding monitors are missing. The scenario is not a live wireless network.',
+  zones:[['UNTRUSTED RADIO ENVIRONMENT',26,68,591,397],['MANAGED SERVICES',639,68,347,397]],
+  nodes:[
+   ['sensors','Sensor nodes','client',60,144],['relay','Mesh relay nodes','service',274,144],
+   ['gateway','Field gateway','service',493,209],['collector','Telemetry collector','service',724,152],
+   ['trust','Trust / IDS monitor','security',724,342],['store','Telemetry database','data',845,257],
+   ['admin','Operator console','external',274,355],['radio','Radio environment','external',60,345]
+  ],
+  edges:[['sensors','relay','Radio frames'],['relay','gateway','Multi-hop'],['gateway','collector','Encrypted uplink'],['collector','store','Measurements'],['collector','trust','Anomaly data'],['admin','gateway','Management'],['radio','sensors','Interference']]
+ },
+ {
+  id:'bgp', name:'BGP Routing Security', category:'GOVERNMENT NETWORK', icon:'⌁', accent:'#efbd83',
+  subtitle:'Prefix origin, peering policy, RPKI and route monitoring',
+  description:'A fictional government research network exchanges BGP routes among a site autonomous system, a government network edge and upstream transit/peering partners. Routing controls include published RPKI route-origin authorizations, route-origin validation, Internet Routing Registry records, ASPA provider information and a monitoring / operations team.',
+  posture:'Training assumptions: RPKI-Invalid origins are intended to be rejected at the edge, but one alternate inbound policy path is misconfigured and several site ROAs need remediation. Export-policy, path-provenance and change-management gaps intentionally remain. These are simulated conditions, not findings about an operating government network.',
+  zones:[['SITE / CUSTOMER AS',26,68,311,397],['GOVERNMENT NETWORK EDGE',363,68,337,397],['EXTERNAL ROUTING',728,68,258,397]],
+  nodes:[
+   ['site','Site autonomous system','client',58,247],['edge','Peering edge routers','service',392,247],
+   ['internet','Internet / peers','external',785,247],['registry','ARIN / IRR records','data',58,112],
+   ['rpki','RPKI / ROA records','security',300,112],['rov','ROV policy engine','security',542,112],
+   ['aspa','ASPA / role policy','security',782,112],['noc','NOC route monitoring','external',782,384]
+  ],
+  edges:[['site','edge','eBGP'],['edge','internet','Peering'],['registry','site','Prefixes'],['rpki','rov','Validated cache'],['rov','edge','Reject invalid'],['aspa','edge','Export policy'],['edge','noc','Route alerts']]
+ }
+];
+
+/* A non-applicable card is NOT a finding in the explicitly defined reference model.
+   These are card-specific design assumptions; never interpret as a guarantee of security. */
+window.SC_NO_REASONS = {
+ S_2:'All services in this reference design use configured endpoints rather than an unauthenticated random socket that another process could claim.',
+ S_3:'Credential verification for the component in scope has retry throttling and activity alerts; the modeled system provides no unbounded password-guessing path.',
+ S_4:'Each sensitive entry point validates its own calling identity; none relies only on a higher-level screen to authenticate requests.',
+ S_5:'Connections use an explicit canonical peer identity, not multiple conflicting identifiers that would confuse a client.',
+ S_6:'The client or neighbor maintains an approved identity for its server or peer and rejects an unexplained change.',
+ S_7:'The communications path in scope authenticates the peer and has transport or link-level integrity protections.',
+ S_8:'Sensitive server-side credentials use a restricted secret store and are not available in shared readable files.',
+ S_9:'Privileged access uses distinct credentials or strong additional authentication, so simple replay of a captured password is not the modeled weakness.',
+ S_10:'The configured security policy does not allow silent negotiation down to weaker authentication.',
+ S_J:'The client-side reference configuration does not store a reusable privileged credential in an exposed location.',
+ S_Q:'No vulnerable self-service password recovery or credential-reset path is included for this component.',
+ S_K:'The deployed components have unique provisioned administrator credentials; there is no factory default administrator password.',
+ S_A:'The open-threat Ace requires an original attack hypothesis. For this scenario, no additional identity-spoofing weakness beyond the documented cases has been assumed.',
+ T_3:'The design uses standard, supported cryptographic protocols, not a custom key exchange or home-grown integrity algorithm.',
+ T_4:'Authorization decisions are centralized at the service boundary and independently enforced for each protected operation.',
+ T_5:'Every state-changing message carries a freshness token, timestamp or sequence check; a duplicate is not executed a second time.',
+ T_6:'Datastores are restricted to named service identities and do not expose direct write access to unauthenticated actors.',
+ T_7:'Identifiers are canonicalized before access policy checks, preventing an alternate textual name from bypassing a permission.',
+ T_8:'The relevant in-transit messages have integrity protection; an intermediary cannot silently alter them.',
+ T_9:'Untrusted clients cannot decide the authoritative value of protected state; the server recalculates and validates it.',
+ T_10:'Record permissions use specific named roles rather than universal groups or unrestricted write access.',
+ T_J:'No protected configuration or object in the reference model has world-writable permissions.',
+ T_Q:'The service revalidates sensitive fields after each trust-boundary crossing and before use.',
+ T_K:'The component does not dynamically load unreviewed plug-ins, extensions or code from untrusted sources.',
+ T_A:'The open-threat Ace needs an original tampering path. This scenario does not specify another mutable trust boundary for this card.',
+ R_2:'Security logs are structured, sanitized and safely rendered, so attacker-controlled text is not executable in a log viewer.',
+ R_3:'Security logs are kept in a dedicated restricted repository, inaccessible to low-privilege users.',
+ R_4:'The system uses a standard, properly verified digital-signature scheme where non-repudiation is required.',
+ R_5:'Audit events use authenticated transport with tamper detection between components.',
+ R_6:'Audit events include consistent UTC timestamps and correlation identifiers.',
+ R_7:'Audit storage has separate retention, capacity alerts and backpressure; an attacker cannot force the disappearance of old events.',
+ R_8:'Audit records include actor, operation, target, outcome and correlation ID rather than ambiguous text.',
+ R_9:'Distinct principals use unique identities rather than a single shared secret that obscures attribution.',
+ R_10:'External callers cannot freely insert fabricated events into the authoritative audit stream.',
+ R_J:'Audit history is append-only and monitored for missing heartbeat events or deletion attempts.',
+ R_Q:'Sensitive actions retain reliable, attributable evidence to resolve later disputes.',
+ R_K:'The described components do emit audit events for sensitive operations.',
+ R_A:'The reference architecture has no additional unlogged or unattributable action for this open-threat card.',
+ I_2:'This model uses managed cryptographic keys rather than weak password-derived file encryption.',
+ I_3:'Client-facing errors do not expose stack traces, secrets or internal sensitive values.',
+ I_4:'Sensitive contents are not sent unprotected in cookies, exports or unencrypted message bodies.',
+ I_5:'Confidential data is protected using reviewed, standard encryption rather than a custom cipher.',
+ I_6:'There is no hidden revision or occluded content recoverable from exported records in this reference flow.',
+ I_7:'The relevant remote endpoint is authenticated with verified credentials or certificates; a simple intermediary is rejected.',
+ I_8:'Search, monitoring and indexing pipelines enforce the same access policy as their authoritative sources.',
+ I_9:'Private files have explicit access permissions; users cannot browse another role’s protected data by file access.',
+ I_10:'The reference design does not create publicly readable private-data files or exports without access controls.',
+ I_J:'There is no reusable, fixed global encryption key exposed in an extractable application artifact.',
+ I_Q:'The entire traffic path carrying sensitive data uses an authenticated encrypted connection.',
+ I_K:'Cryptography is used on the sensitive network links included in the diagram.',
+ I_A:'No additional disclosure mechanism was specified for this open-threat card beyond the known training cases.',
+ D_2:'The authentication or peer-identity service has capacity controls, redundancy and rate limiting appropriate to the scenario.',
+ D_3:'The client tolerates malformed remote input and recovers without becoming unusable while traffic continues.',
+ D_4:'The server side enforces concurrency limits and isolates high-cost work from routine requests.',
+ D_5:'Anonymous traffic cannot consume unbounded client-side resources; limits apply before authentication.',
+ D_6:'Anonymous input is rate-limited at entry points and cannot monopolize server resources.',
+ D_7:'The client does not retain a persistent corrupted state after traffic is removed.',
+ D_8:'Service recovery and integrity checks prevent lasting unavailability after an abusive session ends.',
+ D_9:'Anonymous traffic cannot permanently corrupt client configuration or state in the reference architecture.',
+ D_10:'Unauthenticated traffic cannot permanently damage server state or disable core operations in this model.',
+ D_J:'The logging pipeline has separate capacity and isolation from production services.',
+ D_Q:'No component is specified that can multiply hostile request traffic by about ten times into an external target.',
+ D_K:'No service is specified that can amplify hostile traffic by about one hundred times.',
+ D_A:'No additional novel denial-of-service vector is part of the defined training architecture.',
+ E_5:'The relevant data is validated by one authoritative path; duplicate validation routes do not disagree.',
+ E_6:'The modeled service does not depend on unused .NET permissions or an unexpectedly broad .NET runtime grant.',
+ E_7:'Only serialized, validated data crosses this trust boundary, not attacker-controlled pointers or memory addresses.',
+ E_8:'The service checks state again after it crosses the boundary, preventing a time-of-check/time-of-use mismatch.',
+ E_9:'The validation contract is documented and enforced at the service interface before data reaches consumers.',
+ E_10:'Callers have an explicit documented security contract for the privileged interface.',
+ E_J:'No untrusted input is rendered as executable HTML or script in this interface.',
+ E_Q:'The component does not embed arbitrary user content or external URLs into executable pages.',
+ E_K:'No lower-privilege input can become an operating-system command with higher privileges.',
+ E_A:'No additional path for unauthorized privilege gain is described beyond the explicitly modeled threats.'
+};
+
+/* Actionable cases are intentional security gaps in the FICTIONAL exercise architectures.
+   Format: cardId: [component, concise threat, explicit reason the card is actionable, mitigation]. */
+window.SC_GAPS = {
+ portal: {
+  S_3:['Identity provider','Unthrottled customer sign-in permits repeated password guesses.','The training portal intentionally omits per-account login throttling on its password endpoint. Repeated failed logins would produce a testable security defect.','Apply per-account and per-network rate limits, MFA and attack monitoring.'],
+  S_4:['Case-management API','Case download endpoint accepts a request without checking the caller identity.','The API design assumes the browser has already authenticated and skips identity verification on one direct-download path.','Require authentication and authorization on every API operation.'],
+  S_8:['Case-management API','Notification partner credential appears in readable service logs.','The reference integration logs a reusable partner token as part of request diagnostics, permitting its reuse by log readers.','Redact secrets from logs, rotate exposed tokens and use a managed secret store.'],
+  S_9:['Identity provider','A stolen customer password alone grants access to sensitive cases.','Password-only access remains enabled for viewing confidential case documents; no additional authentication factor is required.','Require MFA or step-up verification for sensitive documents and account changes.'],
+  S_J:['Customer portal UI','Session token remains in browser-accessible persistent storage.','The training front end places a reusable session token in local storage, expanding exposure to client-side script.','Use secure HttpOnly SameSite cookies, short sessions and strong XSS defenses.'],
+  S_Q:['Identity provider','Account recovery uses a weak, unverified recovery link.','The reference flow allows password recovery based on an old email link without additional proof of possession.','Use short-lived single-use recovery tokens, rate limits and notification.'],
+  S_A:['Identity provider','Service-to-service token is accepted without an audience check.','The API trusts an identity-provider token even when it was issued for a different client, enabling cross-service impersonation.','Enforce token issuer, audience, expiry and intended use at each API.'],
+  T_4:['Case-management API','Staff-only actions are hidden in the UI but not authorized in the API.','The reference design puts role checks in the staff interface while one backend endpoint relies on that visibility control.','Enforce object-level and role-based checks on the server for every operation.'],
+  T_5:['Case-management API','Duplicate case-approval requests execute twice.','State-changing approval requests lack a replay-resistant operation ID in the training API.','Require idempotency keys and reject repeated signed operations.'],
+  T_7:['Document storage','Alternative file path spelling bypasses a folder permission check.','The design compares raw document paths before normalizing traversal and encoding, creating a specific testable bypass.','Canonicalize identifiers and paths before authorization, and validate access by object ID.'],
+  T_9:['Case-management API','Client-supplied case status is treated as authoritative.','The API accepts a status value from the browser for one workflow without checking server-side allowed transitions.','Apply server-owned state transitions and role checks.'],
+  T_Q:['Case-management API','A hidden customer identifier can be changed after client validation.','One case-update API trusts the case identifier in a browser form and fails to reauthorize the target record.','Bind target identifiers to the authenticated user and recheck authorization.'],
+  T_A:['Document storage','Upload metadata is accepted after scanning without checking it again.','The file-import pipeline scans a temporary object but copies mutable metadata to the final record without verification.','Bind scan approval to a content hash and immutable upload metadata.'],
+  R_3:['Case database','Routine support agents can read restricted security audit exports.','An internal support role is granted a shared audit-export folder containing sign-in events.','Separate security logs from support data and restrict export access.'],
+  R_7:['Case database','Case audit events disappear when a shared log rotates.','The training design keeps authentication and application events in a small rotating store without protected retention.','Forward security events to protected retention and alert on capacity.'],
+  R_8:['Case-management API','Case edit logs do not identify which record changed.','The modeled audit message records only “case updated,” not the actor, record or old/new state.','Log stable actor ID, target, action, outcome and correlation ID.'],
+  R_Q:['Case-management API','Case approvals lack evidence of the approving staff identity.','An approval event stores only the changed status, so staff can plausibly dispute who approved a sensitive case.','Capture authenticated approver identity and tamper-evident approval history.'],
+  I_3:['Case-management API','Detailed API errors reveal customer identifiers and stack traces.','The reference API returns raw database error messages to the browser on failed case lookups.','Return generic errors and protect diagnostic details on the server.'],
+  I_8:['Case database','Search index exposes restricted case summaries to unauthorised users.','The indexing pipeline copies private case text without synchronizing its record-level access rules.','Enforce permissions on indexed queries and limit indexed sensitive fields.'],
+  I_9:['Document storage','Customer document downloads omit ownership checks.','The reference document API checks only whether a session exists, not whether that customer owns the file ID.','Enforce per-object ownership checks on every document request.'],
+  I_10:['Document storage','Generated case export is stored with public-read permissions.','The training workflow makes one bulk export accessible by a long-lived public object URL.','Make objects private and use short-lived scoped access links.'],
+  D_2:['Identity provider','Unlimited password-reset emails exhaust the login notification queue.','The reset endpoint has no request throttling and shares a constrained queue with normal login alerts.','Limit reset requests and isolate critical authentication notifications.'],
+  D_6:['Case-management API','Anonymous document-preview work can exhaust the API worker pool.','The reference design creates an expensive preview job before authenticating the requester.','Authenticate before launching work, apply queue limits and enforce job budgets.'],
+  D_8:['Document storage','Oversized uploads fill persistent storage and block cases.','The model lacks per-tenant storage quotas and a recovery process for orphaned large uploads.','Apply upload quotas, temporary-file cleanup and storage alarms.'],
+  E_5:['Case-management API','Different authorization paths disagree on staff case permissions.','One API checks a customer role while an internal route trusts a stale case-assignee flag; the same request yields different access.','Unify policy evaluation and test both routes against identical records.'],
+  E_8:['Case-management API','Case ownership is checked before a mutable workflow update.','The training API checks ownership, then uses a separately changeable case pointer during an async update.','Use an immutable object reference and reauthorize inside the transaction.'],
+  E_J:['Customer portal UI','Customer-supplied case message renders as executable HTML.','The reference messages page inserts user content without output encoding in a staff review panel.','Escape content, sanitize rich text and use a strong content security policy.'],
+  E_Q:['Customer portal UI','External preview HTML is embedded without sandbox restrictions.','A document preview URL from the notification partner is embedded directly into a privileged staff page.','Sandbox external content, validate origins and restrict framing.'],
+  E_A:['Case-management API','Customer role can invoke an internal case export endpoint.','The internal export route trusts a staff-role header supplied across an untrusted proxy boundary.','Strip untrusted role headers and enforce server-derived privileges.']
+ },
+ wireless: {
+  S_3:['Field gateway','Gateway maintenance login permits repeated password guesses.','The legacy gateway maintenance console omits rate limits for password authentication.','Throttle login attempts and require strong operator authentication.'],
+  S_4:['Sensor nodes','Unverified radio identity is accepted as proof of membership.','The gateway trusts a sender node ID without checking a device-specific authenticator on legacy packets.','Authenticate message origin with per-device keys and reject unauthenticated frames.'],
+  S_6:['Sensor nodes','Nodes accept a replacement gateway identity without trust continuity.','A legacy node silently trusts a new gateway key after reconnecting, allowing gateway impersonation.','Pin approved gateway identities and validate key rotation.'],
+  S_7:['Mesh relay nodes','Legacy relay radio frames have no origin authentication.','One relay hop trusts plain radio frames even when they claim sensor data from another node.','Apply authenticated link encryption and per-hop identity checks.'],
+  S_8:['Field gateway','A shared fleet credential is stored in a readable gateway backup.','The reference backup includes a reusable wireless-network key accessible to ordinary operators.','Use protected hardware key storage, scoped backup access and key rotation.'],
+  S_10:['Sensor nodes','Connection negotiates down to unauthenticated legacy mode.','During commissioning a sensor can fall back to an unprotected legacy radio profile without an alert.','Disable insecure fallback and authenticate required protocol modes.'],
+  S_J:['Sensor nodes','Extracted node credential can impersonate another sensor.','A group of battery-powered sensors shares the same reusable authentication secret.','Provision distinct node keys and support revocation of compromised devices.'],
+  S_A:['Trust / IDS monitor','Sybil identities inflate sensor voting during alarm consensus.','The gateway accepts several logical sensor IDs from one enrolled radio identity when deciding whether a reading is trustworthy.','Bind unique identities to hardware credentials and detect duplicate identities.'],
+  T_5:['Telemetry collector','Old measurement packets are replayed as current readings.','The collector accepts authenticated measurements without checking a monotonic sequence number or freshness window.','Validate sequence numbers, timestamps and anti-replay windows.'],
+  T_8:['Mesh relay nodes','A relay may modify readings on a legacy unauthenticated hop.','Some radio frames carry measurements with no per-message integrity tag.','Authenticate every radio packet and detect invalid measurement signatures.'],
+  T_9:['Telemetry collector','Untrusted sensor-provided quality score controls alert decisions.','The reference pipeline uses a quality score supplied by the sensor without independent trust checks.','Recompute confidence server-side using cross-sensor validation.'],
+  T_Q:['Field gateway','Sensor trust score is changed after its initial validation.','The gateway validates a frame but later uses editable relay metadata to decide whether to forward it.','Cryptographically bind payload, identity, metadata and authorization at receipt.'],
+  T_A:['Mesh relay nodes','Malicious relay drops selected measurement packets.','A compromised relay can forward some sensors while silently discarding reports from others; no delivery confirmation is enforced.','Use redundant routes, end-to-end acknowledgments and drop-rate monitoring.'],
+  R_6:['Telemetry collector','Sensor readings are logged without a reliable event timestamp.','The baseline telemetry collector records ingestion order but not authenticated measurement time.','Store synchronized measurement and receipt timestamps with sequence IDs.'],
+  R_8:['Trust / IDS monitor','Conflicting node behavior is missing from audit evidence.','The trust monitor stores aggregate reputation but not which peer observed each conflicting report.','Preserve signed per-peer observations and decision history.'],
+  R_9:['Field gateway','A shared sensor credential prevents attribution to a device.','Multiple sensor IDs authenticate with a common key, so packet provenance cannot identify the originating physical node.','Use unique device identities and rotate shared credentials.'],
+  R_J:['Trust / IDS monitor','Trust-history entries can be overwritten without detection.','The monitor updates reputation values in place without protected event history.','Write append-only, integrity-protected trust decisions.'],
+  I_7:['Mesh relay nodes','Legacy neighbor identity is not checked before relaying sensitive readings.','The older radio profile does not validate the neighboring node identity before sharing telemetry.','Mutually authenticate relay neighbors and encrypt sensitive telemetry.'],
+  I_J:['Field gateway','Fleet-wide radio key can be extracted from a gateway image.','The training gateway firmware image contains the same fixed secret used by all legacy sensors.','Use per-device hardware-backed keys and secure provisioning.'],
+  I_Q:['Mesh relay nodes','Sensor observations travel unencrypted over a legacy radio hop.','The modeled radio link uses integrity-free plaintext for some measurements.','Use link or end-to-end authenticated encryption for telemetry.'],
+  D_3:['Sensor nodes','Repeated malformed frames keep a battery-powered node awake.','An adjacent sender can trigger high-cost radio parsing repeatedly until the sender stops.','Apply early frame validation, duty-cycle controls and energy budgets.'],
+  D_5:['Sensor nodes','Unauthenticated messages cause repeated wake-ups and battery drain.','Low-power sensors respond to any wake-up packet without an authentication prefilter.','Use authenticated wake-up patterns and duty-cycle limits.'],
+  D_6:['Field gateway','Radio request flood exhausts gateway receive capacity.','The gateway reserves expensive decode resources before applying per-node traffic limits.','Rate-limit untrusted frames, isolate decode queues and monitor saturation.'],
+  D_8:['Mesh relay nodes','Persistent forwarding-loop state survives a malformed route advertisement.','The mesh-control design has no loop-free route recovery after corrupted relay advertisements.','Validate route freshness and enforce bounded convergence / recovery.'],
+  D_9:['Sensor nodes','Anonymous radio flooding permanently drains a sensor battery.','The reference node can be forced to remain awake until battery exhaustion by unauthenticated radio events.','Guard wake-up operations and budget energy per remote sender.'],
+  D_A:['Trust / IDS monitor','Badmouthing reports exclude a good relay from forwarding.','The trust monitor accepts unsupported negative reputation reports from peers and can quarantine a healthy relay.','Correlate evidence across peers and require minimum-confidence quarantine decisions.'],
+  E_5:['Field gateway','Legacy and new radio paths enforce different enrollment checks.','The same node identity is checked cryptographically on one radio protocol but trusted as text on another.','Use a single enrollment decision across all radio interfaces.'],
+  E_8:['Trust / IDS monitor','A sensor changes its advertised role after a trust decision.','The monitor authorizes a low-power device based on mutable relay metadata before forwarding is committed.','Bind device role to authenticated identity at decision time.'],
+  E_A:['Operator console','A compromised sensor can influence gateway trust-administration actions.','A sensor-provided diagnostic flag is treated as a privileged maintenance request in a shared control queue.','Separate telemetry from privileged commands and require operator authorization.']
+ },
+ bgp: {
+  S_7:['Peering edge routers','An external BGP session lacks peer authentication.','The simulated government network has one peering connection without TCP authentication or equivalent session protection.','Require appropriate BGP neighbor authentication and edge-session hardening.'],
+  S_8:['Peering edge routers','Reusable BGP session secret appears in readable configuration backups.','The model intentionally includes router backups that reveal a shared neighbor authentication secret.','Restrict and encrypt router backups, scope credentials and rotate secrets.'],
+  S_A:['RPKI / ROA records','Dormant address space can be originated by an unauthorized network.','Some unused site allocations have no protective origin authorization, so a forged route may appear Not Found rather than Invalid.','Publish appropriate protective ROAs, including AS0 where suitable, and monitor dormant space.'],
+  T_4:['Peering edge routers','Peer and customer route filters apply inconsistent authorization rules.','Route acceptance is assembled separately on two edges, and one peer is missing the equivalent customer-prefix filter.','Generate consistent policy from authoritative prefix data and test both edges.'],
+  T_5:['ARIN / IRR records','Stale prefix policy survives an address-ownership change.','A removed prefix remains in a cached route-filter feed and can still be accepted after authorization changes.','Refresh filters from current authoritative records and validate cache age.'],
+  T_9:['Peering edge routers','A neighbor-controlled AS_PATH influences trusted policy without checks.','An inbound route-map trusts attributes supplied by an external peer while deciding which route receives preferred treatment.','Apply explicit peer policy, attribute sanitization and path anomaly monitoring.'],
+  T_10:['ARIN / IRR records','Unauthenticated routing-registry record can be altered to permit a bogus prefix.','One legacy route object has a weakly protected maintainer account, permitting unauthorized updates to prefix authorization data.','Migrate to authenticated authoritative IRR records and monitor changes to route objects.'],
+  T_Q:['Peering edge routers','Route policy trusts an upstream attribute after an untrusted boundary.','An inbound BGP community received from a partner is interpreted as internal authorization without reassessment.','Strip or remap external communities and validate policy after import.'],
+  T_A:['Peering edge routers','Forged shorter AS path is selected by policy as trustworthy.','The route policy considers short AS_PATH attractive but has no additional path-provenance checks for anomalous peers.','Monitor AS-path anomalies and evaluate appropriate path / provider authorization validation.'],
+  R_3:['NOC route monitoring','Operations exports disclose sensitive peering configurations.','Routine reporting shares raw neighbor policy and session-secret fields with broad read-only audiences.','Redact secrets, protect peering inventory and apply report access controls.'],
+  R_6:['NOC route monitoring','BGP policy change events lack reliable timestamps.','The fictional change log lacks synchronized timestamps tying policy deployments to routing anomalies.','Record UTC times, commit identifiers and operator identity for every change.'],
+  R_8:['NOC route monitoring','Route alerts do not preserve affected prefix and peer details.','The alert stores “BGP change” without the announced origin, exact prefix, peer and previous path.','Store full event provenance, state diffs and correlated alert IDs.'],
+  R_Q:['NOC route monitoring','Route-filter edits lack attributable change approvals.','One policy deployment tool records the new configuration but not the approving operator.','Require signed approvals and tamper-evident change records.'],
+  I_7:['Peering edge routers','One peering session can be redirected to an unauthenticated neighbor.','The scenario includes a legacy eBGP adjacency missing authenticated session protection.','Harden sessions, verify neighbor endpoint configuration and monitor adjacency changes.'],
+  I_8:['NOC route monitoring','Monitoring exports reveal internal site routing metadata.','The public reporting workflow exposes private peering notes and internal next-hop annotations.','Separate public route visibility from restricted internal operations metadata.'],
+  I_9:['ARIN / IRR records','Broadly readable route inventory includes restricted contact records.','A generated inventory contains sensitive management contacts and is published outside the operations access boundary.','Minimize registry exports and restrict operational contact details.'],
+  I_A:['Peering edge routers','Unauthorized route diversion could expose government research traffic.','A prefix or more-specific prefix without complete origin protection may be diverted to a misleading advertised path.','Complete ROA coverage and monitor global routing views for unexpected origins and more specifics.'],
+  D_4:['Peering edge routers','Malformed route floods exhaust routing policy processing.','A partner can advertise unbounded route changes and the modeled edge lacks appropriate update and prefix limits.','Enforce route limits, damping where appropriate and control-plane monitoring.'],
+  D_6:['Peering edge routers','Unexpected customer prefix count overloads a router session.','A site peer has no max-prefix ceiling and can inject large numbers of announcements before policy checks.','Set monitored max-prefix thresholds and enforce import policy.'],
+  D_8:['Peering edge routers','Leaked routes persist and blackhole research-site traffic.','An incorrect export policy can advertise peer-learned routes to another peer, disrupting correct return paths.','Deploy BGP roles / OTC where supported, strict export filtering and route-leak alerts.'],
+  D_10:['Peering edge routers','Untrusted BGP updates can force prolonged routing instability.','The simulation includes a peer with weak update-rate controls and a costly convergence recovery process.','Apply prefix/update limits, safe failover policy and convergence monitoring.'],
+  D_A:['RPKI / ROA records','An overly permissive ROA maxLength enables a more-specific route diversion.','The reference records have one ROA permitting more-specific prefixes beyond the intended announcement length.','Review each ROA maxLength, constrain to legitimate announcements and monitor subprefixes.'],
+  E_5:['Peering edge routers','Two edges disagree on accepting an RPKI-Invalid announcement.','One edge enforces ROV rejection while an alternate inbound route-policy path can override it.','Centralize ROV policy enforcement and test it on every external session.'],
+  E_9:['ARIN / IRR records','Peering policy depends on undocumented stale IRR selection rules.','Operators cannot tell which routing-registry sources a filter generator prefers during conflicts.','Document source precedence, require authoritative records and test generated filters.'],
+  E_10:['Peering edge routers','Site operators cannot know the export-policy assumptions applied to their prefixes.','A customer-site handoff has no published requirements for allowed prefixes or peer/customer route relationships.','Document BGP import/export contracts and validate peer roles and prefix ownership.'],
+  E_A:['ASPA / role policy','Unauthorized transit relationship is trusted in a route export.','The scenario leaves one site provider-authorization record incomplete and lacks corresponding path-policy checks.','Maintain complete ASPA provider authorizations and enforce appropriate export controls.']
+ }
+};
+
+/* Strongly typed assessment; no remote calls and no assertion about any live system. */
+window.SC_ASSESS = function(modeId, cardId) {
+ const mode=window.SC_MODES.find(m=>m.id===modeId);
+ const row=window.SC_GAPS[modeId] && window.SC_GAPS[modeId][cardId];
+ if (!mode) throw new Error('Unknown game type');
+ if (row) return {applicable:true, component:row[0], title:row[1], threat:row[1],
+  reason:row[2], mitigation:row[3], verdict:'Actionable in this training model'};
+ const base=window.SC_NO_REASONS[cardId] || 'No such weakness is part of the stated reference architecture.';
+ const specials={
+   wireless:{S_Q:'Sensor nodes do not have self-service password recovery; the modeled credentials use device provisioning instead.',E_6:'Sensor gateways and radio nodes in this model do not use the .NET permissions system.',E_J:'The radio-only node data path does not render HTML or JavaScript.',E_Q:'No radio sensor renders user-generated web pages or arbitrary URLs.',I_6:'Sensor measurements do not contain hidden editing revisions or redacted document history.'},
+   bgp:{S_2:'BGP uses configured TCP 179 sessions, not opportunistic random server ports.',S_4:'BGP routing updates arrive over configured neighbor sessions, not a wholly anonymous web connection. The missing cryptographic peer-authentication control is separately assessed on the 7 of Spoofing.',S_3:'The BGP protocol does not authenticate by repeated human password submissions in this model; operator login is separately rate-limited.',S_9:'Route origin checks do not rely on reusable user passwords, and router administrator login is separately protected.',S_Q:'BGP peering sessions do not have a customer-facing password recovery workflow.',I_2:'BGP route announcements are not password-encrypted files; this file brute-force scenario does not apply.',I_4:'The BGP control-plane flow has no browser cookie or email body carrying user secrets.',I_5:'The routing design does not invent a custom cipher for document encryption.',I_6:'BGP announcements contain no hidden document revision history.',I_J:'This design does not distribute a fixed application encryption key to routers.',I_Q:'The original card concerns an unencrypted application channel such as HTTP or SMTP; this routing scenario instead evaluates BGP peer authentication and filtering.',E_6:'These routing devices do not use .NET application permissions.',E_7:'BGP peers exchange parsed route attributes, not pointers to process memory.',E_J:'The BGP route-control path does not render browser-executable user input.',E_Q:'The BGP control plane does not embed user-generated web content or random URLs.',E_K:'Peering route attributes do not feed operating-system shell commands in this reference design.'}
+ };
+ const reason=(specials[modeId]&&specials[modeId][cardId])||base;
+ return {applicable:false, component:'Reference design',title:'No actionable threat for this card',threat:'',
+  reason:reason+' The stated architecture therefore does not establish this vulnerability; this is not proof of security.',mitigation:'',verdict:'Not actionable in this training model'};
+};
+</script><script>/* STRIDE Security Challenge -- local offline training game.
+   The AI is rule-based, and assessments are fixed to the three fictional architectures.
+   Original card prompts licensed by Microsoft under Creative Commons Attribution 3.0 US. */
+(() => {
+'use strict';
+const CARDS=window.SC_CARDS||[];
+const MODES=window.SC_MODES||[];
+const BY_ID=Object.fromEntries(CARDS.map(c=>[c.id,c]));
+const STORAGE='stride-security-challenge-v1';
+const PLAYERS=[{id:'p0',name:'You',isAI:false},{id:'p1',name:'AI Scout',isAI:true},{id:'p2',name:'AI Sentinel',isAI:true}];
+const SUITS=[
+ {id:'S',name:'Spoofing',symbol:'♠',color:'#334f8f',abbr:'Spoofing',definition:'Impersonating another person, device or service.'},
+ {id:'T',name:'Tampering',symbol:'♣',color:'#21805d',abbr:'Tampering',definition:'Unauthorized modification of data, commands or code.'},
+ {id:'R',name:'Repudiation',symbol:'♥',color:'#c05466',abbr:'Repudiation',definition:'Lack of trustworthy evidence for who performed an action.'},
+ {id:'I',name:'Information Disclosure',symbol:'♦',color:'#187b99',abbr:'Info Disclosure',definition:'Sensitive information exposed to the wrong party.'},
+ {id:'D',name:'Denial of Service',symbol:'✹',color:'#7850a0',abbr:'Denial of Service',definition:'Disrupting or degrading the availability of a service.'},
+ {id:'E',name:'Elevation of Privilege',symbol:'★',color:'#5652af',abbr:'EoP · Trump',definition:'Gaining powers or permissions without authorization.'}
+];
+const SUIT=Object.fromEntries(SUITS.map(s=>[s.id,s]));
+const root=document.getElementById('app');
+let state=load();
+let ui={modalCard:null,handFilter:'legal',logFilter:'all'};
+let aiTimer=null;
+let epoch=0;
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function toText(s){return escapeHTML(s);}
+function mode(id=state.modeId){return MODES.find(m=>m.id===id)||MODES[0];}
+function formatSuit(card){return `${card.rank} of ${SUIT[card.suit].name}`;}
+function newState(){return {version:1,view:'select',modeId:'portal',game:null};}
+function validGame(g){
+ if(!g||!MODES.some(m=>m.id===g.modeId)||!Array.isArray(g.players)||g.players.length!==3||!Array.isArray(g.trick)||!Array.isArray(g.events)||!Array.isArray(g.history)||!['playing','trick-end','finished'].includes(g.phase))return false;
+ if(g.players.some((p,i)=>p.id!==`p${i}`||!Array.isArray(p.hand)||p.hand.some(c=>!BY_ID[c])))return false;
+ if(!Number.isInteger(g.plays)||g.plays<0||g.plays>74||!Number.isInteger(g.trickNum)||g.trickNum<1||g.trickNum>25)return false;
+ if(g.events.length!==g.plays)return false;
+ const remaining=g.players.flatMap(p=>p.hand);const used=g.events.map(e=>e.cardId);
+ return remaining.length+used.length===74&&new Set([...remaining,...used]).size===74&&g.currentId!==undefined;
+}
+function load(){
+ try{
+  const s=JSON.parse(localStorage.getItem(STORAGE));
+  if(s&&s.version===1&&MODES.some(m=>m.id===s.modeId)&&['select','play','log','rules'].includes(s.view)&&(!s.game||validGame(s.game)))return s;
+ }catch(e){console.info('A local save was unavailable. Starting clean.',e);}
+ return newState();
+}
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(state));}catch(e){console.info('Local storage unavailable:',e);}}
+function tell(text){const n=document.getElementById('notify');if(n)n.textContent=text;}
+function cancelAI(){if(aiTimer!==null){clearTimeout(aiTimer);aiTimer=null;}}
+function cardOrder(a,b){return SUITS.findIndex(s=>s.id===BY_ID[a].suit)-SUITS.findIndex(s=>s.id===BY_ID[b].suit)||BY_ID[a].value-BY_ID[b].value;}
+function shuffleDeck(){let ids=CARDS.map(c=>c.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]];}return ids;}
+function beginGame(selectedMode=state.modeId){
+ if(!MODES.some(m=>m.id===selectedMode)||CARDS.length!==74)return;
+ cancelAI();epoch+=1;ui={modalCard:null,handFilter:'legal',logFilter:'all'};
+ const players=PLAYERS.map(p=>({...p,hand:[],score:0,threats:0,tricks:0}));
+ shuffleDeck().forEach((id,i)=>players[i%3].hand.push(id));
+ players.forEach(p=>p.hand.sort(cardOrder));
+ const opener=players.find(p=>p.hand.includes('T_3'));
+ state={version:1,view:'play',modeId:selectedMode,game:{modeId:selectedMode,players,currentId:opener.id,phase:'playing',plays:0,trickNum:1,trick:[],events:[],history:[],winnerId:null,winningCardId:null,startedAt:new Date().toISOString(),shuffleNonce:epoch}};
+ render();tell(`${opener.name} opens with the 3 of Tampering.`);
+}
+function activeGame(){return state.game;}
+function currentPlayer(){const g=activeGame();return g&&g.players.find(p=>p.id===g.currentId);}
+function ledSuit(){const g=activeGame();return g&&g.trick.length?BY_ID[g.trick[0].cardId].suit:null;}
+function legalCards(){
+ const g=activeGame(),p=currentPlayer();if(!g||g.phase!=='playing'||!p)return [];
+ if(g.plays===0)return p.hand.includes('T_3')?['T_3']:[];
+ const lead=ledSuit();if(!lead)return p.hand.slice();
+ const follows=p.hand.filter(id=>BY_ID[id].suit===lead);
+ return follows.length?follows:p.hand.slice();
+}
+function trickParticipants(g){return g.players.filter(p=>p.hand.length>0).map(p=>p.id);}
+function nextPlayer(g){
+ const cur=g.players.findIndex(p=>p.id===g.currentId);
+ for(let k=1;k<=3;k++){
+  const p=g.players[(cur+k)%3];
+  if(p.hand.length && !g.trick.some(e=>e.playerId===p.id))return p.id;
+ }
+ return null;
+}
+function nextTrick(){
+ const g=activeGame();if(!g||g.phase!=='trick-end')return;
+ if(g.players.every(p=>p.hand.length===0)){
+  g.phase='finished';render();return;
+ }
+ g.trick=[];g.trickNum+=1;g.phase='playing';g.winnerId=null;g.winningCardId=null;
+ // If the previous winner has no cards in the last partial trick, the next active player leads.
+ const anchor=g.players.findIndex(p=>p.id===g.currentId);
+ for(let k=0;k<3;k++){
+  const p=g.players[(anchor+k)%3];if(p.hand.length){g.currentId=p.id;break;}
+ }
+ render();
+}
+function chooseAI(){
+ const choices=legalCards(),g=activeGame(),lead=ledSuit();if(choices.length<=1)return choices[0];
+ const ranked=choices.slice().sort((a,b)=>BY_ID[a].value-BY_ID[b].value);
+ if(lead){
+  let highest=Math.max(...g.trick.map(e=>cardPower(e.cardId,lead)));
+  const winners=ranked.filter(id=>cardPower(id,lead)>highest);
+  if(winners.length&&Math.random()<.62)return winners.sort((a,b)=>cardPower(a,lead)-cardPower(b,lead))[0];
+  return Math.random()<.83?ranked[0]:ranked[Math.floor(Math.random()*ranked.length)];
+ }
+ // AI keeps a little variety in leading cards, while respecting the first-card rule.
+ return Math.random()<.57?ranked[Math.floor(Math.random()*Math.min(ranked.length,5))]:ranked[Math.floor(Math.random()*ranked.length)];
+}
+function cardPower(id,lead){const c=BY_ID[id];return c.suit==='E'?100+c.value:c.suit===lead?c.value:-1;}
+function scheduleAI(){
+ const g=activeGame();if(state.view!=='play'||!g||g.phase!=='playing'||!currentPlayer()?.isAI||ui.modalCard){cancelAI();return;}
+ if(aiTimer!==null)return;
+ const capturedEpoch=epoch,capturedGame=g,capturedTurn=g.currentId,capturedPlays=g.plays;
+ aiTimer=setTimeout(()=>{
+  aiTimer=null;
+  if(epoch!==capturedEpoch||state.game!==capturedGame||state.view!=='play'||capturedGame.phase!=='playing'||capturedGame.currentId!==capturedTurn||capturedGame.plays!==capturedPlays)return;
+  const id=chooseAI();if(id)commitCard(id);
+ },Number.isFinite(window.SC_TEST_AI_DELAY)?Math.max(0,window.SC_TEST_AI_DELAY):560);
+}
+function commitCard(cardId){
+ const g=activeGame(),p=currentPlayer();
+ if(!g||g.phase!=='playing'||!p||!legalCards().includes(cardId))return false;
+ const card=BY_ID[cardId],result=window.SC_ASSESS(g.modeId,cardId);
+ const entry={cardId,playerId:p.id,trickNum:g.trickNum,applicable:result.applicable,component:result.component,title:result.title,reason:result.reason,mitigation:result.mitigation,at:new Date().toISOString()};
+ g.events.push(entry);g.trick.push(entry);g.plays++;
+ if(result.applicable){p.score++;p.threats++;}
+ p.hand=p.hand.filter(id=>id!==cardId);
+ ui.modalCard=null;
+ // The eligible trick is whoever participated, including the 2-player final trick.
+ const eligible=g.trick.length + g.players.filter(v=>v.hand.length>0&&!g.trick.some(e=>e.playerId===v.id)).length;
+ if(g.trick.length>=eligible){
+  const lead=BY_ID[g.trick[0].cardId].suit;
+  const winner=g.trick.reduce((a,b)=>cardPower(a.cardId,lead)>cardPower(b.cardId,lead)?a:b);
+  const winP=g.players.find(x=>x.id===winner.playerId);
+  winP.score++;winP.tricks++;g.winnerId=winP.id;g.winningCardId=winner.cardId;g.currentId=winP.id;g.phase='trick-end';
+  g.history.push({number:g.trickNum,leaderId:g.trick[0].playerId,winnerId:winP.id,winningCardId:winner.cardId,ledSuit:lead,plays:g.trick.map(x=>({...x}))});
+  tell(`${winP.name} won trick ${g.trickNum}.`);
+ }else{
+  const nxt=nextPlayer(g);if(nxt)g.currentId=nxt;
+ }
+ render();return true;
+}
+function changeView(view){
+ if(!['select','play','log','rules'].includes(view))return;
+ cancelAI();ui.modalCard=null;state.view=view;render();window.scrollTo(0,0);
+}
+function escapeAttr(s){return escapeHTML(s);}
+function cardSymbol(card){return SUIT[card.suit].symbol;}
+function smallFace(card){
+ const s=SUIT[card.suit];return `<div class="mini-card" style="color:${s.color}"><b>${escapeHTML(card.rank)}</b><div class="pip">${s.symbol}</div><div class="tiny-suit">${escapeHTML(card.suit==='E'?'TRUMP':s.abbr)}</div></div>`;
+}
+function fullFace(card,legal=true){
+ const s=SUIT[card.suit];return `<button type="button" class="playing-card ${card.suit==='E'?'trump':''} ${legal?'legal':''}" data-action="card" data-card="${card.id}" ${legal?'':'disabled'} aria-label="${escapeAttr(formatSuit(card)+'. '+(legal?'View automatic assessment':'Must follow the lead suit'))}">
+    <span class="rank" style="color:${s.color}">${escapeHTML(card.rank)}</span><span class="symbol" style="color:${s.color}">${s.symbol}</span><span class="category">${escapeHTML(s.name)}</span><span class="hint">${escapeHTML(card.prompt)}</span><span class="play-indicator">${legal?'SELECT CARD →':'Follow suit'}</span><span class="corner-bottom">${escapeHTML(card.rank)}</span>
+   </button>`;
+}
+function cardPreview(card){const s=SUIT[card.suit];return `<div class="big-card ${card.suit==='E'?'trump':''}"><div class="rank" style="color:${s.color}">${escapeHTML(card.rank)}</div><div class="symbol" style="color:${s.color}">${s.symbol}</div><div class="suit-name">${escapeHTML(s.name)}</div><div class="tail">${escapeHTML(card.rank)}</div></div>`;}
+function diagramSVG(m){
+ const W=1040,H=500,byId=Object.fromEntries(m.nodes.map(n=>[n[0],n]));
+ const nodeW=170,nodeH=63;
+ const zones=m.zones.map(z=>`<g><rect class="zone" x="${z[1]}" y="${z[2]}" width="${z[3]}" height="${z[4]}" rx="14"/><text class="zone-label" x="${z[1]+15}" y="${z[2]+24}">${escapeHTML(z[0])}</text></g>`).join('');
+ const edges=m.edges.map(([aId,bId,label])=>{
+  const a=byId[aId],b=byId[bId];if(!a||!b)return '';
+  const ax=a[3]+nodeW/2,ay=a[4]+nodeH/2,bx=b[3]+nodeW/2,by=b[4]+nodeH/2;
+  const dx=bx-ax,dy=by-ay,scale=Math.min(nodeW/2/Math.max(Math.abs(dx),1),nodeH/2/Math.max(Math.abs(dy),1));
+  const sx=ax+dx*scale,sy=ay+dy*scale,ex=bx-dx*scale,ey=by-dy*scale;
+  const mx=(sx+ex)/2,my=(sy+ey)/2,tw=Math.min(142,Math.max(52,label.length*7.1+15));
+  return `<g><title>${escapeHTML(a[1]+' → '+b[1]+' · '+label)}</title><path class="connection" d="M${sx.toFixed(1)} ${sy.toFixed(1)} L${ex.toFixed(1)} ${ey.toFixed(1)}" marker-end="url(#arr)"/></g>`;
+ }).join('');
+ const nodes=m.nodes.map(n=>{
+  const [id,label,type,x,y]=n;
+  const words=label.split(' '),lines=[''];
+  for(const word of words){let last=lines.length-1;if((lines[last]+' '+word).trim().length>18&&lines.length<2){lines.push(word);}else{lines[last]=(lines[last]+' '+word).trim();}}
+  if(lines.length===1)lines[0]=label;
+  const types={client:'CLIENT / SITE',service:'SERVICE / ROUTER',security:'SECURITY CONTROL',data:'DATA / REGISTRY',external:'EXTERNAL'};
+  return `<g><rect class="node ${type}" x="${x}" y="${y}" width="${nodeW}" height="${nodeH}" rx="11"/><rect x="${x+10}" y="${y+11}" width="5" height="41" rx="2" fill="${type==='security'?'#56ad8d':type==='data'?'#ac88dd':type==='external'?'#e0a550':type==='client'?'#76aadd':'#9fb5cc'}"/><text class="node-type" x="${x+24}" y="${y+20}">${types[type]}</text>${lines.map((t,i)=>`<text class="node-label" x="${x+23}" y="${y+(lines.length===2?39:45)+i*15}">${escapeHTML(t)}</text>`).join('')}</g>`;
+ }).join('');
+ return `<svg class="diagram" viewBox="0 0 ${W} ${H}" role="img" aria-label="Read-only ${escapeAttr(m.name)} architecture: ${escapeAttr(m.description)}"><defs><marker id="arr" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 1 L9 5 L0 9" fill="none" stroke="#8099b7" stroke-width="1.7"/></marker></defs>${zones}${edges}${nodes}</svg>`;
+}
+function navBar(){
+ const inGame=!!activeGame(),v=state.view,choosing=v==='select';
+ return `<header class="appbar"><div class="appbar-inner"><div class="brand"><div class="brand-mark">S</div><div><div class="brand-title">STRIDE Security Challenge</div><span class="brand-sub">THREE SECURITY GAMES · ONE ELEVATION OF PRIVILEGE TRUMP</span></div></div>
+   <div class="header-actions"><span class="header-mode">${choosing?escapeHTML(mode(state.modeId).name)+' selected':inGame?escapeHTML(mode(activeGame().modeId).name):'Choose a game type'}</span>
+    ${inGame&&!choosing?`<button class="btn outline-dark tiny" data-action="restart" title="Immediately reshuffle and start a new game">↻ New game</button>`:''}
+    <button class="btn outline-dark tiny" data-action="navigate" data-view="select">Game types</button>
+    ${inGame?`<button class="btn outline-dark tiny" data-action="navigate" data-view="log">Threat log</button>`:''}
+    <button class="btn outline-dark tiny" data-action="navigate" data-view="rules">Rules</button>
+    ${inGame&&v!=='play'?`<button class="btn primary tiny" data-action="navigate" data-view="play">${choosing?'Resume previous game':'Return to game'}</button>`:''}
+   </div></div></header>`;
+}
+function renderSelect(){
+ const m=mode();return `<div class="hero"><div><div class="eyebrow">SECURITY TRAINING · SOLO + TWO AI OPPONENTS</div><h1>Three worlds. One security challenge.</h1><p>Choose a fixed reference architecture, then find actionable threats using the original STRIDE deck. Elevation of Privilege is always trump.</p></div><div class="hero-icon">♠ ✦</div></div>
+  <div class="section-heading"><div><div class="overline">STEP 01 / SELECT GAME</div><h2>Choose your security environment</h2><p>One human player versus two automated opponents · exactly three players.</p></div></div>
+  <div class="mode-grid">${MODES.map(x=>`<button class="mode-card ${m.id===x.id?'selected':''}" type="button" data-action="select-mode" data-mode="${x.id}" aria-pressed="${m.id===x.id}"><span class="mode-top"><span class="mode-icon">${x.icon}</span><span class="mode-check">${m.id===x.id?'✓ SELECTED':''}</span></span><span class="mode-category">${escapeHTML(x.category)}</span><strong class="mode-name">${escapeHTML(x.name)}</strong><span class="mode-caption">${escapeHTML(x.subtitle)}</span><span class="mode-pick">${m.id===x.id?'Ready to play':'Choose this game →'}</span></button>`).join('')}</div>
+  <div class="two-col"><section class="panel architecture"><div class="panel-head"><h2>System architecture</h2><span class="pill">FIXED · READ ONLY</span></div><div class="diagram-wrap">${diagramSVG(m)}</div><div class="flow-list" aria-label="Architecture data flows">${m.edges.map(e=>{const from=m.nodes.find(n=>n[0]===e[0]),to=m.nodes.find(n=>n[0]===e[1]);return `<div class="flow-chip"><span class="flow-end">${escapeHTML(from[1])}</span><span class="flow-arrow">→</span><span class="flow-end">${escapeHTML(to[1])}</span><span class="flow-detail">${escapeHTML(e[2])}</span></div>`;}).join('')}</div><div class="legend"><span><span class="sq"></span> Fixed components and connections</span><b>No editing required</b></div><div class="scroll-hint">On a narrow screen, scroll the diagram horizontally.</div></section>
+  <section class="panel panel-pad info-panel"><div class="eyebrow">REFERENCE SYSTEM</div><h2>${escapeHTML(m.name)}</h2><p class="bodycopy">${escapeHTML(m.description)}</p><div class="field-label">Controls and intentional gaps</div><div class="assumption">${escapeHTML(m.posture)}</div><div class="field-label">Automatic assessment</div><p class="bodycopy">Every card is checked against this defined reference design. The game explains why it is actionable or not. No threat entry or card artwork required.</p></section></div>
+  <div class="setup-footer"><div><h2>Ready when you are.</h2><p>74 cards · classic trick-taking rules · automatic decisions and scorekeeping.</p><div class="player-inline"><span class="player-token">● You (human)</span><span class="player-token">◆ AI Scout</span><span class="player-token">◆ AI Sentinel</span></div></div><button class="btn dark big" data-action="start">Start ${escapeHTML(m.name)} →</button></div><p class="smallprint">These fictional cases are for education and do not assert vulnerabilities in a real government network, wireless system or customer portal.</p>`;
+}
+function renderScores(g){
+ return `<div class="scores">${g.players.map((p,i)=>`<div class="score ${i===0?'human':''} ${g.phase==='playing'&&g.currentId===p.id?'current':''}"><div class="score-name"><span class="avatar">${i===0?'YOU':'AI'}</span><div><div class="name">${escapeHTML(p.name)}</div><div class="role">${i===0?'Human':'AI opponent'} · ${p.hand.length} cards left</div></div></div><div><div class="digits">${p.score}<small> pts</small></div><div class="subscore">${p.threats} threats · ${p.tricks} tricks</div></div></div>`).join('')}</div>`;
+}
+function renderTrickSlots(g){
+ return g.players.map(p=>{
+  const e=g.trick.find(x=>x.playerId===p.id);
+  return e?`<div class="played-slot played"><div class="slot-name">${escapeHTML(p.name)}</div>${smallFace(BY_ID[e.cardId])}<div class="decision ${e.applicable?'yes':'no'}">${e.applicable?'✓ +1 threat':'— No threat point'}</div><div class="issue">${escapeHTML(e.applicable?e.title:'Not actionable for this model')}</div></div>`:`<div class="played-slot empty"><div class="slot-name">${escapeHTML(p.name)}</div><span style="font-size:30px">${p.hand.length===0?'✓':'···'}</span><span style="font-size:13px">${p.hand.length===0?'Out of cards':'Not played yet'}</span></div>`;
+ }).join('');
+}
+function renderHand(g){
+ const p=g.players[0],yourTurn=g.phase==='playing'&&g.currentId==='p0',legal=yourTurn?legalCards():[],lead=ledSuit();
+ const hasLead=lead&&p.hand.some(id=>BY_ID[id].suit===lead);
+ const filters=[['legal',yourTurn?'Playable cards':'Your remaining cards'],...SUITS.map(s=>[s.id,s.name])];
+ let listed=p.hand;
+ if(ui.handFilter==='legal')listed=yourTurn?legal:p.hand;
+ else listed=p.hand.filter(id=>BY_ID[id].suit===ui.handFilter);
+ const note=!yourTurn?(g.phase==='trick-end'?'Trick complete. Continue to the next trick when ready.':`It is ${escapeHTML(currentPlayer()?.name||'another player')}'s turn. Your hand remains private.`):lead&&hasLead?`You must follow ${escapeHTML(SUIT[lead].name)}. Only that suit can be played.`:lead?'You have no cards in the led suit. Any remaining card is legal.':g.plays===0?'The player holding the 3 of Tampering must open the first trick.':'You lead this trick. Choose any card.';
+ return `<section class="panel hand-panel" id="your-hand"><div class="hand-top"><div><div class="overline">YOUR CARDS</div><h2>${yourTurn?'Your turn — choose a card':'Your private hand'}</h2><p>${note}</p></div><span class="pill">${p.hand.length} in hand</span></div>
+  <div class="hand-controls" role="group" aria-label="Filter your hand">${filters.map(([id,label])=>`<button class="tab ${ui.handFilter===id?'active':''}" type="button" data-action="hand-filter" data-filter="${id}" aria-pressed="${ui.handFilter===id}">${escapeHTML(label)}</button>`).join('')}</div>
+  ${listed.length?`<div class="hand-grid">${listed.map(id=>fullFace(BY_ID[id],legal.includes(id))).join('')}</div>`:`<div class="empty-hand">${p.hand.length?'No cards in this category. Choose another suit tab.':'You have played all your cards.'}</div>`}
+  </section>`;
+}
+function renderGame(){
+ const g=activeGame();if(!g)return renderSelect();
+ if(g.phase==='finished')return renderFinished();
+ const isHuman=g.currentId==='p0',p=currentPlayer();
+ const lead=ledSuit();const humanHint=g.phase==='trick-end'?'The trick is complete. Review the winner and continue.':isHuman?'Your turn. Choose a legal card below to see an automatic actionable-threat decision.':`${escapeHTML(p.name)} is selecting a card and assessing its security impact.`;
+ const finishMarkup=g.phase==='trick-end'?`<div class="trick-finish"><b>🏆 ${escapeHTML(g.players.find(p=>p.id===g.winnerId)?.name||'Player')} wins trick ${g.trickNum}!</b><p>${escapeHTML(formatSuit(BY_ID[g.winningCardId]))} took the trick. ${g.players.every(p=>p.hand.length===0)?'All cards are now played.':'The trick winner leads next.'} +1 trick point awarded.</p><button type="button" class="btn dark" data-action="continue">${g.players.every(p=>p.hand.length===0)?'See final results →':'Next trick →'}</button></div>`:'';
+ return `<div class="board-head"><div><div class="eyebrow">GAME ${String(g.trickNum).padStart(2,'0')} · ${escapeHTML(mode(g.modeId).name)}</div><h1>${escapeHTML(mode(g.modeId).name)} <span style="color:#6c7e97">/ Game table</span></h1><p>1 human · 2 AI opponents · Elevation of Privilege ★ beats the lead suit</p></div><div class="board-actions"><button class="btn tiny" data-action="restart">↻ New game</button><button class="btn tiny" data-action="navigate" data-view="log">Threat log ↗</button></div></div>
+ ${renderScores(g)}${finishMarkup}
+ <div class="game-content"><section class="panel table-panel"><div class="table-header"><div><div class="overline">CARD TABLE</div><h2>Trick ${String(g.trickNum).padStart(2,'0')}</h2><div class="tiny-meta">${lead?`Lead suit: ${escapeHTML(SUIT[lead].name)}`:'Waiting for opening card'} · ${g.trick.length} played</div></div><span class="counter">${g.plays} / 74 cards</span></div><div class="played-area">${renderTrickSlots(g)}</div><div class="status-line"><span><strong>${g.phase==='trick-end'?'Trick awarded':isHuman?'Your decision':'AI is thinking'}</strong> · ${humanHint}</span><span class="pct">${Math.round(g.plays/74*100)}%</span></div></section>
+ <aside class="panel round-panel"><div class="eyebrow">AUTOMATIC ASSESSMENT</div><h2>Why a threat counts</h2><p>Each original STRIDE card is evaluated against the chosen fictional system. An actionable card must identify a specific weakness that can become a fix or test case.</p><div class="turn-banner">★ Elevation of Privilege is always trump</div><div class="round-note"><b>Scoring:</b> +1 for an actionable threat automatically identified on your card; +1 for winning a trick. Non-actionable cards still compete for the trick.</div><div class="round-note"><b>Notice:</b> Verdicts are pre-authored from the reference architecture, not live vulnerability scans. The AI opponents use rule-based card decisions.</div><button class="btn tiny" style="margin-top:15px" data-action="navigate" data-view="rules">Review the rules →</button></aside></div>
+ ${renderHand(g)}`;
+}
+function renderModal(){
+ const card=BY_ID[ui.modalCard],g=activeGame();if(!card||!g)return '';
+ const result=window.SC_ASSESS(g.modeId,card.id);
+ const canPlay=g.phase==='playing'&&g.currentId==='p0'&&legalCards().includes(card.id);
+ return `<div class="modal-backdrop" data-action="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" type="button" aria-label="Close assessment" data-action="close-modal">×</button><div class="modal-inner"><div class="modal-visual">${cardPreview(card)}<div class="modal-meta">${escapeHTML(formatSuit(card))}${card.suit==='E'?' · TRUMP':''}</div></div><div class="modal-content"><div class="eyebrow">CARD ASSESSMENT · ${escapeHTML(mode(g.modeId).name.toUpperCase())}</div><h2 id="modal-title">${escapeHTML(formatSuit(card))}</h2><div class="card-prompt">${escapeHTML(card.prompt)}</div><div class="verdict ${result.applicable?'':'no'}"><div class="verdict-top">${result.applicable?'✓ ACTIONABLE THREAT':'— NOT ACTIONABLE FOR THIS SYSTEM'}</div><h3>${escapeHTML(result.title)}</h3><p><b>Why:</b> ${escapeHTML(result.reason)}</p>${result.applicable?`<div class="fix"><b>Component:</b> ${escapeHTML(result.component)}<p style="margin-top:9px"><b>Recommended action:</b> ${escapeHTML(result.mitigation)}</p></div>`:''}</div><div class="decision-meta"><span class="point-value ${result.applicable?'':'no'}">${result.applicable?'+1 threat point':'0 threat points'} · trick can still be won</span><button class="btn primary big" type="button" data-action="play-card" data-card="${card.id}" ${canPlay?'':'disabled'}>Play this card →</button></div><p class="modal-footer-note">The assessment is predetermined for the fictional system. It is not proof of a real vulnerability or proof that a control is secure.</p></div></div></section></div>`;
+}
+function renderLog(){
+ const g=activeGame();if(!g)return `<div class="hero banner-compact"><div><div class="eyebrow">ASSESSMENT LOG</div><h1>No game has started yet</h1><p>Choose one of the three security games and play some cards.</p></div></div><div style="margin-top:20px"><button class="btn primary" data-action="navigate" data-view="select">Choose game →</button></div>`;
+ const applicable=g.events.filter(e=>e.applicable),not=g.events.filter(e=>!e.applicable);
+ const events=[...g.events].reverse().filter(e=>ui.logFilter==='all'||(ui.logFilter==='yes'?e.applicable:!e.applicable));
+ return `<div class="report-head"><div><div class="eyebrow">SECURITY ASSESSMENT · ${escapeHTML(mode(g.modeId).name)}</div><h1>Threat findings & explanations</h1><p>Every played card has an automatic verdict and a recorded reason, including non-actionable cards.</p></div><div class="board-actions"><button class="btn" data-action="navigate" data-view="play">Return to game</button></div></div>
+ <div class="metrics"><span class="metric">${g.events.length} cards reviewed</span><span class="metric">${applicable.length} actionable findings</span><span class="metric">${not.length} non-actionable</span><span class="metric">${g.history.length} tricks completed</span></div>
+ <div class="hand-controls"><button class="tab ${ui.logFilter==='all'?'active':''}" data-action="log-filter" data-filter="all">All assessments (${g.events.length})</button><button class="tab ${ui.logFilter==='yes'?'active':''}" data-action="log-filter" data-filter="yes">Actionable (${applicable.length})</button><button class="tab ${ui.logFilter==='no'?'active':''}" data-action="log-filter" data-filter="no">Not actionable (${not.length})</button></div>
+ ${events.length?`<div class="log-list">${events.map(e=>{const card=BY_ID[e.cardId],p=g.players.find(p=>p.id===e.playerId);return `<article class="log-entry"><div class="log-top"><b>${escapeHTML(formatSuit(card))} · ${escapeHTML(p?.name||'Player')}</b><span class="meta">Trick ${e.trickNum}</span></div><div class="label ${e.applicable?'yes':'no'}">${e.applicable?'✓ ACTIONABLE · +1 point':'— NOT ACTIONABLE · 0 threat points'}</div><p><b>${escapeHTML(e.applicable?e.title:'Why it does not count:')}</b> ${escapeHTML(e.applicable?'':e.reason)}</p><details><summary>${e.applicable?'Read reason and recommended action':'See original card and decision'}</summary><p><b>Original card:</b> ${escapeHTML(card.prompt)}<br><b>Why:</b> ${escapeHTML(e.reason)}${e.mitigation?`<br><b>Recommended action:</b> ${escapeHTML(e.mitigation)}`:''}</p></details></article>`;}).join('')}</div>`:`<div class="empty-report">No assessments match this filter yet.</div>`}<p class="smallprint">A training finding is a testable design hypothesis. Validate against real implementation evidence before creating security work items.</p>`;
+}
+function renderFinished(){
+ const g=activeGame(),high=Math.max(...g.players.map(p=>p.score));
+ const winners=g.players.filter(p=>p.score===high);
+ const winnerText=winners.length===1?`${winners[0].name} wins!`:`Tie: ${winners.map(p=>p.name).join(' and ')}`;
+ return `<section class="finished"><div class="eyebrow">GAME COMPLETE · ${escapeHTML(mode(g.modeId).name)}</div><h1>🏆 ${escapeHTML(winnerText)}</h1><p>All 74 cards were played across ${g.history.length} tricks. Review the security assessments or start a freshly shuffled game.</p><div class="final-row"><button class="btn dark big" data-action="restart">↻ New game</button><button class="btn" data-action="navigate" data-view="log">Review all findings →</button><button class="btn" data-action="navigate" data-view="select">Choose another game →</button></div></section>${renderScores(g)}
+ <section class="panel panel-pad" style="margin-top:18px"><h2>What you practiced</h2><p style="margin-top:10px;color:#576980">Each card was judged against the explicit reference architecture. Actionable threats earn points; the highest eligible lead-suit card wins unless an Elevation of Privilege trump was played. These results are training examples, not live audit findings.</p></section>`;
+}
+function renderRules(){
+ const arr=[
+  ['Choose one of three games','Customer Portal, Wireless Security or BGP Routing Security. Each uses a fixed architecture with intentional gaps and controls. There are no custom fields or editing tools.'],
+  ['Exactly three players','You are the only human. AI Scout and AI Sentinel take their own turns. The holder of the 3 of Tampering opens the first trick.'],
+  ['Follow suit','Each trick proceeds clockwise. Follow the led STRIDE category if you have a card in that suit. Otherwise, play any card.'],
+  ['Automatic verdicts','Click a card to see a specific actionable threat or a reason it is not actionable for the selected fictional architecture. The assessment is automatic.'],
+  ['Elevation of Privilege always trumps','The highest Elevation of Privilege card takes the trick if any are played; otherwise the highest card of the led suit wins. Aces rank highest.'],
+  ['Simple scoring','Every actionable card earns one point; winning a trick earns one more. Non-actionable cards can still win tricks. The highest total at the end wins.'],
+  ['New game always reshuffles','The New game button immediately cancels pending AI moves, clears all scores and past cards, shuffles a fresh deck, and starts the same game type.'],
+  ['Use findings responsibly','The automated decisions reflect known, fictional scenario assumptions. They do not scan or certify any actual network. Verify suggested remediations before filing work items.']
+ ];
+ return `<div class="hero banner-compact"><div><div class="eyebrow">RULES & GUIDE</div><h1>How to play STRIDE Security Challenge</h1><p>Three different security environments, one familiar trick-taking deck, and Elevation of Privilege as the trump suit.</p></div></div><div class="rules-grid">${arr.map((r,i)=>`<div class="rule"><div class="overline">${String(i+1).padStart(2,'0')}</div><h3>${escapeHTML(r[0])}</h3><p>${escapeHTML(r[1])}</p></div>`).join('')}</div><section class="panel panel-pad" style="margin-top:19px"><h2>The six STRIDE suits</h2><div class="rules-grid" style="margin-top:15px">${SUITS.map(s=>`<div class="rule" style="box-shadow:none"><h3><span style="color:${s.color};font-size:29px">${s.symbol}</span> ${escapeHTML(s.name)}${s.id==='E'?' · TRUMP':''}</h3><p>${escapeHTML(s.definition)}</p></div>`).join('')}</div><p class="smallprint">Original Elevation of Privilege card prompts © 2009 Microsoft Corporation, under Creative Commons Attribution 3.0 United States. The game is an independent educational adaptation.</p></section>`;
+}
+function render(){
+ const view=state.view,body=view==='select'?renderSelect():view==='play'?renderGame():view==='log'?renderLog():renderRules();
+ root.innerHTML=navBar()+`<main class="wrapper">${body}</main>`+`<footer class="footer">STRIDE Security Challenge · Local browser game · Fictional assessments only · No data is sent to a server.</footer>`+(ui.modalCard?renderModal():'');
+ document.title=(view==='play'&&state.game?mode(state.game.modeId).name+' · ':'')+'STRIDE Security Challenge';
+ persist();scheduleAI();
+}
+function download(filename,txt,mime){
+ const url=URL.createObjectURL(new Blob([txt],{type:mime}));const a=document.createElement('a');a.href=url;a.download=filename;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+function exportCSV(){
+ const g=activeGame();if(!g){tell('Start a game to export an assessment log.');return;}
+ const rows=[['Game type','Trick','Player','Card','Decision','Threat','Component','Why / assessment','Recommended action','Threat points']];
+ g.events.forEach(e=>rows.push([mode(g.modeId).name,e.trickNum,g.players.find(p=>p.id===e.playerId)?.name,formatSuit(BY_ID[e.cardId]),e.applicable?'Actionable':'Not actionable',e.applicable?e.title:'',e.component,e.reason,e.mitigation,e.applicable?1:0]));
+ const q=x=>'"'+String(x??'').replace(/"/g,'""')+'"';
+ download('STRIDE_Security_Challenge_'+g.modeId+'_assessments.csv','\ufeff'+rows.map(r=>r.map(q).join(',')).join('\r\n'),'text/csv;charset=utf-8');
+}
+function exportJSON(){const g=activeGame();if(!g)return;download('STRIDE_Security_Challenge_'+g.modeId+'_game.json',JSON.stringify(state,null,2),'application/json');}
+function onClick(event){
+ const el=event.target.closest('[data-action]');if(!el)return;
+ const a=el.dataset.action;
+ if(a==='backdrop'&&event.target!==el)return;
+ if(a==='navigate'){changeView(el.dataset.view);return;}
+ if(a==='select-mode'){cancelAI();ui.modalCard=null;state.modeId=el.dataset.mode;state.view='select';render();return;}
+ if(a==='start'){beginGame(state.modeId);window.scrollTo(0,0);return;}
+ if(a==='restart'){beginGame(activeGame()?.modeId||state.modeId);window.scrollTo(0,0);return;}
+ if(a==='continue'){nextTrick();return;}
+ if(a==='hand-filter'){ui.handFilter=el.dataset.filter;render();return;}
+ if(a==='log-filter'){ui.logFilter=el.dataset.filter;render();return;}
+ if(a==='card'){
+  const id=el.dataset.card,p=currentPlayer();
+  if(p?.id==='p0'&&legalCards().includes(id)){cancelAI();ui.modalCard=id;render();}
+  return;
+ }
+ if(a==='close-modal'||a==='backdrop'){ui.modalCard=null;render();return;}
+ if(a==='play-card'){
+  const id=el.dataset.card;
+  if(ui.modalCard===id){commitCard(id);}return;
+ }
+ if(a==='csv')exportCSV();
+ if(a==='json')exportJSON();
+}
+document.addEventListener('click',onClick);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ui.modalCard){ui.modalCard=null;render();}});
+// Sanity-check the hard-coded threat model before exposing a partially working interface.
+if(CARDS.length!==74||MODES.length!==3||CARDS.some(c=>!window.SC_NO_REASONS[c.id])||!MODES.every(m=>window.SC_GAPS[m.id])){
+ root.textContent='The complete 74-card threat model could not be loaded. Please open the full downloaded game.';
+}else render();
+// Limited instrumentation for the deterministic local browser test suite; no network use.
+if(window.SC_TEST_MODE)window.SC_TEST_HOOKS={getState:()=>structuredClone(state),assess:(m,c)=>window.SC_ASSESS(m,c),restart:()=>beginGame(state.game?.modeId||state.modeId),advance:nextTrick,step:()=>commitCard(legalCards()[0]),legal:()=>legalCards()};
+})();
+</script><style>.brand-mark{flex:none}body.has-ad{padding-bottom:var(--ad-h,0px)}.modal-backdrop{padding-bottom:calc(24px + var(--ad-h,0px)) !important}.modal{max-height:calc(100dvh - 48px - var(--ad-h,0px)) !important}</style>
+<script src="ads.js"></script>
+</body></html>
